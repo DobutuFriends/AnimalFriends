@@ -1,7 +1,10 @@
-### ‚¨–ğ—§‚¿ƒTƒCƒg
-[ƒCƒ‰ƒXƒg‚Å‚í‚©‚éIgit“ü–å](http://blog.asial.co.jp/894)
-[ƒTƒ‹‚Å‚à‚í‚©‚éGit“ü–å](http://www.backlog.jp/git-guide/)@©‹tˆø‚«Git‚à‚ ‚è‚Ü‚·
-[A successful Git branching model “ú–{Œê–ó](http://keijinsonyaban.blogspot.jp/2010/10/successful-git-branching-model.html)@©ƒuƒ‰ƒ“ƒ`ŠJ”­‚ÌƒxƒXƒgƒvƒ‰ƒNƒeƒBƒX
-[Learn Git Branching](http://k.swd.cc/learnGitBranching-ja/)@©‹Šo“Iƒuƒ‰ƒ“ƒ`‚Ì‘€ì
-[Try Git](https://try.github.io/levels/1/challenges/1)@©CLIGit‚ÌŠî–{‘€ìƒ`ƒ…[ƒgƒŠƒAƒ‹
-[Pro Git](http://git-scm.com/book/ja)@©‘Ğ‚Ì–|–ó
+### ãŠå½¹ç«‹ã¡ã‚µã‚¤ãƒˆ
+
+```
+[ã‚¤ãƒ©ã‚¹ãƒˆã§ã‚ã‹ã‚‹ï¼gitå…¥é–€](http://blog.asial.co.jp/894)
+[ã‚µãƒ«ã§ã‚‚ã‚ã‹ã‚‹Gitå…¥é–€](http://www.backlog.jp/git-guide/)ã€€â†é€†å¼•ãGitã‚‚ã‚ã‚Šã¾ã™
+[A successful Git branching model æ—¥æœ¬èªè¨³](http://keijinsonyaban.blogspot.jp/2010/10/successful-git-branching-model.html)ã€€â†ãƒ–ãƒ©ãƒ³ãƒé–‹ç™ºã®ãƒ™ã‚¹ãƒˆãƒ—ãƒ©ã‚¯ãƒ†ã‚£ã‚¹
+[Learn Git Branching](http://k.swd.cc/learnGitBranching-ja/)ã€€â†è¦–è¦šçš„ãƒ–ãƒ©ãƒ³ãƒã®æ“ä½œ
+[Try Git](https://try.github.io/levels/1/challenges/1)ã€€â†CLIGitã®åŸºæœ¬æ“ä½œãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«
+[Pro Git](http://git-scm.com/book/ja)ã€€â†æ›¸ç±ã®ç¿»è¨³
+```
