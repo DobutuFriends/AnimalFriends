@@ -182,8 +182,8 @@ $ git push origin
     
 ②Web操作
 
-以下、Commit画面から反映させたいBranchを選択し、コミットに表示されているpull requestを選択
-[Commit画面](https://github.com/DobutuFriends/AnimalFriends/commits/master)
+[Commit画面](https://github.com/DobutuFriends/AnimalFriends/commits/master)から反映させたいBranchを選択し、
+コミットに表示されているpull requestを選択
 
 レビューを行い、mergeできる。
 <img src="img1.png" alt="画面" title="サンプル">
