@@ -6,7 +6,7 @@ Gitメモに使うファイル。
 とりあえず貼り付けておくのも可。  
 
 <details>
-  <summary>Title</summary>
+  <summary>テンプレート例</summary>
   ...
 </details>
 
