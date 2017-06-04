@@ -15,8 +15,8 @@ Gitメモに使うファイル。
 
 ```
 Git登録情報
-　ユーザ名：IwakuraS
-　メール：c011206342@edu.teu.ac.jp
+　ユーザ名：user
+　メール：user@edu.teu.ac.jp
  
 上記のユーザーが新規に「test/Iwakura」ブランチを作成し、
 作業を行い
@@ -28,8 +28,8 @@ Git登録情報
 操作：GitBash
 
 ■環境設定
-$ git config --global user.name "IwakuraS"
-$ git config --global user.email "c011206342@edu.teu.ac.jp"
+$ git config --global user.name "user"
+$ git config --global user.email "user@edu.teu.ac.jp"
 $ git config --global core.quotepath false
 $ git config --global gui.encoding utf-8
 
