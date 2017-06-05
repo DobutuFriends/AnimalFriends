@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 61192174858336972}
   m_Layer: 0
   m_Name: rabit
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811259211864420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.27, y: 0.25, z: 0}
+  m_LocalPosition: {x: -3.294693, y: 1.073139, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SPEED: 0.2
   JUMP_POWER: 12
+  bullet: {fileID: 114656953781258704, guid: 496c56f48b3bd47dfb175bed6cfce44e, type: 2}
 --- !u!212 &212083635220079092
 SpriteRenderer:
   m_ObjectHideFlags: 1
