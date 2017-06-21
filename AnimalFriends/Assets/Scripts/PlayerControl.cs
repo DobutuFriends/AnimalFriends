@@ -103,7 +103,7 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0)
         {
             rb.AddForce(transform.up * JUMP_POWER);
-            //UIテスト 監督スクリプトにプレイヤと衝突したことを伝える
+            //UIテスト：HP
             GameObject director = GameObject.Find("GameDirector");
             director.GetComponent<GameDirector>().DecreaseHp();
         }
