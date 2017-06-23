@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 1311531444}
   - component: {fileID: 1311531443}
   m_Layer: 5
-  m_Name: hpGage
+  m_Name: hpGauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

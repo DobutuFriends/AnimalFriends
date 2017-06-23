@@ -131,7 +131,9 @@ public class PlayerControl : MonoBehaviour
     {
             if (transform.position.y < -10)
         {
-            SceneManager.LoadScene("MainScene");
+            Vector2 startPosition = new Vector2(-6, 0);//仮の値 変数化必要
+            transform.position = startPosition;
+            //SceneManager.LoadScene("MainScene"); //処理が重い
         }
     }
 

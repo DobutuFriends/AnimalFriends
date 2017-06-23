@@ -5,15 +5,20 @@ using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour {
 
-    GameObject hpGage;
+    GameObject hpGauge;
 
     void Start()
     {
-        this.hpGage = GameObject.Find("hpGage");
+        this.hpGauge = GameObject.Find("hpGauge");
     }
 
     public void DecreaseHp()
     {
-        this.hpGage.GetComponent<Image>().fillAmount -= 0.1f;
+        this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
+    }
+
+    public void IncreaseHp()
+    {
+        this.hpGauge.GetComponent<Image>().fillAmount += 0.1f;
     }
 }
