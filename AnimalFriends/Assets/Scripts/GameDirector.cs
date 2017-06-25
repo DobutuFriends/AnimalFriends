@@ -12,13 +12,13 @@ public class GameDirector : MonoBehaviour {
         this.hpGauge = GameObject.Find("hpGauge");
     }
 
-    public void DecreaseHp()
+    public void DecreaseHp(int decreaseHp)
     {
-        this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
+        this.hpGauge.GetComponent<Image>().fillAmount -= decreaseHp*0.001f;
     }
 
-    public void IncreaseHp()
+    public void IncreaseHp(int increaseHp)
     {
-        this.hpGauge.GetComponent<Image>().fillAmount += 0.1f;
+        this.hpGauge.GetComponent<Image>().fillAmount += increaseHp*0.001f;
     }
 }
