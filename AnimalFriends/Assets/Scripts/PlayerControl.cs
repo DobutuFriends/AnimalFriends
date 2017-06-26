@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
 		if (Input.GetKey("up"))
 		{
 			rb.velocity = new Vector2(0, JUMP_POWER);
+
 		}
 
 		transform.position = position;
