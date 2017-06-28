@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveEnemyControl : MonoBehaviour
+public class MoveEnemyController : MonoBehaviour
 {
 
-    public float SPEED;
-    public float JUMP_POWER;
+    public float speed;
     private Rigidbody2D rb;
 
     enum Mode { Stop, MoveLeft, MoveRight };
@@ -37,12 +36,12 @@ public class MoveEnemyControl : MonoBehaviour
                 break;
 
             case Mode.MoveLeft:
-                position.x -= SPEED;
+                position.x -= speed;
                 scale.x = 1;
                 break;
 
             case Mode.MoveRight:
-                position.x += SPEED;
+                position.x += speed;
                 scale.x = -1;
                 break;
 
@@ -57,7 +56,6 @@ public class MoveEnemyControl : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // とりあえず何かにぶつかったら逆方向に進む
-        // ここでタグチェックして、プレイヤーの場合は向きを変えずにダメージ系にする。
         switch (mode)
         {
             case Mode.MoveLeft:
