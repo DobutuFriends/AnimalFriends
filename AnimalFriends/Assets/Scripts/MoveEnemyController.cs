@@ -14,7 +14,6 @@ public class MoveEnemyController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         mode = Mode.Stop;
     }
 
@@ -26,35 +25,31 @@ public class MoveEnemyController : MonoBehaviour
 
     void Move()
     {
+        Vector2 position = transform.position;
         Vector2 scale = transform.localScale;
-        float velocityX = 0;
-        float velocityY = rb.velocity.y;
 
         switch (mode)
         {
             case Mode.Stop:
-                velocityX = 0;
-
                 // とりあえず左に動かす
                 mode = Mode.MoveLeft;
                 break;
 
             case Mode.MoveLeft:
-                velocityX = -speed;
+                position.x -= speed;
                 scale.x = 1;
                 break;
 
             case Mode.MoveRight:
-                velocityX = speed;
+                position.x += speed;
                 scale.x = -1;
                 break;
 
             default:
-                velocityX = 0;
                 break;
         }
 
-        rb.velocity = new Vector2(velocityX, velocityY);
+        transform.position = position;
         transform.localScale = scale;
     }
 
