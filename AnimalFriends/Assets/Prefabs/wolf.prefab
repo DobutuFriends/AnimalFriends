@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61318477114192370}
   - component: {fileID: 114333632360042428}
   m_Layer: 0
-  m_Name: ookami
+  m_Name: wolf
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
