@@ -3,6 +3,23 @@ using System.Collections;
 
 public class Collider2dVisualizationTest : MonoBehaviour
 {
+    bool isOn = false;
+
+
+    void Start()
+    {
+    }
+
+    void Update()
+    {
+        // 新しく生成した当たり判定が表示できなかったので、毎フレーム削除と生成を繰り返す
+        // 超重そうだけどデバッグ用の機能だしいいや
+        if (isOn)
+        {
+            Collider2dVisualizationer.DeleteLineRenderer();
+            Collider2dVisualizationer.CreateLineRenderer();
+        }
+    }
 
     /// <summary>
     /// レンダラーを表示
@@ -25,6 +42,7 @@ public class Collider2dVisualizationTest : MonoBehaviour
     /// </summary>
     public void Create()
     {
+        isOn = true;
         Collider2dVisualizationer.CreateLineRenderer();
     }
 
@@ -33,6 +51,7 @@ public class Collider2dVisualizationTest : MonoBehaviour
     /// </summary>
     public void Delete()
     {
+        isOn = false;
         Collider2dVisualizationer.DeleteLineRenderer();
     }
 }
