@@ -12,13 +12,13 @@ public class breakOnGround : MonoBehaviour {
     /// <summary>
     /// 時間計測用変数
     /// </summary>
-    protected float timeElapsed;
+    float timeElapsed;
 
     bool onGround;
 
 	// Use this for initialization
 	void Start () {
-        onGround = false;
+
 	}
 	
 	// Update is called once per frame
@@ -26,8 +26,8 @@ public class breakOnGround : MonoBehaviour {
     {
         if (onGround == true)
         {
-            timeElapsed += Time.deltaTime;
             Debug.Log(timeElapsed);
+            timeElapsed += Time.deltaTime;
             if (TIME_OUT <= timeElapsed)
             {
                 destroyObj();
@@ -38,6 +38,12 @@ public class breakOnGround : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         onGround = true;
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        onGround = false;
+        timeElapsed = 0;
     }
 
     void destroyObj()
