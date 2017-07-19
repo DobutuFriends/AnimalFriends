@@ -16,9 +16,24 @@ public class breakOnGround : MonoBehaviour {
 
     bool onGround;
 
+    GameObject go;
+
+    [SerializeField]
+    GameObject perticle;
+
+    /// プレハブ
+    static GameObject _prefab = null;
+    /// パーティクルの生成
+    public static void Add(GameObject perticle, float x, float y)
+    {
+        Vector3 position = new Vector3(x, y, 0);
+        Instantiate(perticle, position, Quaternion.identity);
+    }
+
 	// Use this for initialization
 	void Start () {
-
+        go = GameObject.Find("break_ground");
+        
 	}
 	
 	// Update is called once per frame
@@ -30,6 +45,11 @@ public class breakOnGround : MonoBehaviour {
             timeElapsed += Time.deltaTime;
             if (TIME_OUT <= timeElapsed)
             {
+                // パーティクルを生成
+                for (int i = 0; i < 32; i++)
+                {
+                    Add(perticle, go.transform.localPosition.x, go.transform.localPosition.y);
+                }
                 destroyObj();
             }
         }
