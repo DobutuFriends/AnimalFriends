@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     enum State { Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, };
-    enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, }
+    enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, SummerSalt = 4, }
     enum Direction { Right = 0, Left = 1, };
 
     State state;
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     Vector2 Move()
     {
+        SummarSolt();
         Vector2 scale = transform.localScale;
         Vector2 newVelocity;
         float velocityX = 0;
@@ -79,11 +80,14 @@ public class PlayerController : MonoBehaviour
             velocityX = 0;
         }
 
+        transform.localScale = scale;
+
         if (coolTime > 0)
         {
             if (state == State.Idle || state == State.Walk)
             {
-                velocityX = 0;
+                // 一旦攻撃中も移動できるようにした。 仕様次第
+                //velocityX = 0;
             }
             else if (state == State.KnockBack)
             {
@@ -94,12 +98,11 @@ public class PlayerController : MonoBehaviour
             return newVelocity;
         }
 
-        if (Input.GetKeyDown("up"))
+        if (Input.GetKeyDown("c"))
         {
             velocityY = jumpPower;
         }
 
-        transform.localScale = scale;
 
         newVelocity = new Vector2(velocityX, velocityY);
         rb.velocity = newVelocity;
@@ -139,17 +142,21 @@ public class PlayerController : MonoBehaviour
         Vector2 attackPosition = transform.position;
         Quaternion attackRotation = transform.rotation;
 
+        if (Input.GetKey("up"))
+        {
+            SummarSoltStart();
+        }
+
         if (direction == Direction.Right)
         {
-            attackPosition.x += 50;
+            attackPosition.x += 80;
             attackPosition.y -= 20;
         }
         else
         {
-            attackPosition.x -= 50;
+            attackPosition.x -= 80;
             attackPosition.y -= 20;
         }
-
 
         switch (attackState)
         {
@@ -177,6 +184,7 @@ public class PlayerController : MonoBehaviour
     {
         PhysicalAttackController physicalAttackController = Instantiate(PhysicalAttack, position, rotation);
         physicalAttackController.SetDirection(direction == Direction.Right);
+        physicalAttackController.transform.parent = transform;
     }
 
 
@@ -213,6 +221,23 @@ public class PlayerController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+
+    // クソ実装
+    private void SummarSoltStart()
+    {
+        transform.Rotate(new Vector3(0, 0, 20));
+        float velocityX = rb.velocity.x; ;
+        float velocityY = jumpPower / 2;
+        rb.velocity = new Vector2(velocityX, velocityY);
+    }
+    private void SummarSolt()
+    {
+        if (transform.rotation != Quaternion.Euler(0, 0, 0))
+        {
+            transform.Rotate(new Vector3(0, 0, 20));
         }
     }
 }
