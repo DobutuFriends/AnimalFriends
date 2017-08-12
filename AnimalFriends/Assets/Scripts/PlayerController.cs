@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     enum State { Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, };
-    enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, }
+    enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, SummerSalt = 4, }
     enum Direction { Right = 0, Left = 1, };
 
     State state;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
         hpGauge = gameObject.transform.Find("hpGauge").gameObject;
         defaultGaugeWidth = hpGauge.transform.localScale.x;
 
@@ -57,49 +58,40 @@ public class PlayerController : MonoBehaviour
 
     Vector2 Move()
     {
+        SummarSolt();
         Vector2 scale = transform.localScale;
         Vector2 newVelocity;
-        float velocityX = 0;
+        float velocityX = rb.velocity.x;
         float velocityY = rb.velocity.y;
+
+        if (coolTime > 0 && state == State.KnockBack)
+        {
+            return rb.velocity;
+        }
 
         if (Input.GetKey("left"))
         {
             direction = Direction.Left;
             velocityX = -speed;
-            scale.x = -1;
+            scale.x = Math.Abs(scale.x) * -1;
         }
         else if (Input.GetKey("right"))
         {
             direction = Direction.Right;
             velocityX = speed;
-            scale.x = 1;
+            scale.x = Math.Abs(scale.x);
         }
         else
         {
             velocityX = 0;
         }
 
-        if (coolTime > 0)
-        {
-            if (state == State.Idle || state == State.Walk)
-            {
-                velocityX = 0;
-            }
-            else if (state == State.KnockBack)
-            {
-                velocityX = rb.velocity.x;
-            }
-            newVelocity = new Vector2(velocityX, velocityY);
-            rb.velocity = newVelocity;
-            return newVelocity;
-        }
+        transform.localScale = scale;
 
-        if (Input.GetKeyDown("up"))
+        if (Input.GetKeyDown("c"))
         {
             velocityY = jumpPower;
         }
-
-        transform.localScale = scale;
 
         newVelocity = new Vector2(velocityX, velocityY);
         rb.velocity = newVelocity;
@@ -139,17 +131,21 @@ public class PlayerController : MonoBehaviour
         Vector2 attackPosition = transform.position;
         Quaternion attackRotation = transform.rotation;
 
+        if (Input.GetKey("up"))
+        {
+            SummarSoltStart();
+        }
+
         if (direction == Direction.Right)
         {
-            attackPosition.x += 50;
+            attackPosition.x += 80;
             attackPosition.y -= 20;
         }
         else
         {
-            attackPosition.x -= 50;
+            attackPosition.x -= 80;
             attackPosition.y -= 20;
         }
-
 
         switch (attackState)
         {
@@ -177,6 +173,7 @@ public class PlayerController : MonoBehaviour
     {
         PhysicalAttackController physicalAttackController = Instantiate(PhysicalAttack, position, rotation);
         physicalAttackController.SetDirection(direction == Direction.Right);
+        physicalAttackController.transform.parent = transform;
     }
 
 
@@ -213,6 +210,21 @@ public class PlayerController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void SummarSoltStart()
+    {
+        transform.Rotate(new Vector3(0, 0, 24));
+        float velocityX = rb.velocity.x; ;
+        float velocityY = jumpPower / 2;
+        rb.velocity = new Vector2(velocityX, velocityY);
+    }
+    private void SummarSolt()
+    {
+        if (transform.rotation != Quaternion.Euler(0, 0, 0))
+        {
+            transform.Rotate(new Vector3(0, 0, 24));
         }
     }
 }
