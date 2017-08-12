@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50171330161303840}
   - component: {fileID: 61318477114192370}
   - component: {fileID: 114333632360042428}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: wolf
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4289972499595566}
   - component: {fileID: 212096541086265668}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: hpGauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,6 +150,7 @@ MonoBehaviour:
   speed: 700
   jumpPower: 1500
   attackInterval: 0.2
+  dashReceptionTime: 0.2
   maxHp: 5
   physicalAttack1: {fileID: 114623369196607380, guid: 6c564c7c1ace044c8a942085629bf148,
     type: 2}
@@ -186,8 +187,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1424425053
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b97bbb5413e65457885ff4d61b2d04e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

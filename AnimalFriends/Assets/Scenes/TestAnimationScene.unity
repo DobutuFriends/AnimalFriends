@@ -550,6 +550,11 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114333632360042428, guid: de7c7267e56c843ab95ba0d76769b505,
+        type: 2}
+      propertyPath: dashReceptionTime
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de7c7267e56c843ab95ba0d76769b505, type: 2}
   m_IsPrefabParent: 0
