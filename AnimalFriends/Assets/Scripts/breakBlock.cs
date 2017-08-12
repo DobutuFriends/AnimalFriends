@@ -5,6 +5,8 @@ using UnityEngine;
 public class breakBlock : MonoBehaviour {
 
     Rigidbody2D rb;
+    float timeElapsed;
+    float TIME_OUT = 10;
 
     /// 開始。コルーチンで処理を行う
     //IEnumerator Start()
@@ -17,7 +19,7 @@ public class breakBlock : MonoBehaviour {
         float spd = Random.Range(400.0f, 700.0f);
         SetVelocity(dir, spd);
 
-        //// 見えなくなるまで小さくする
+        ////// 見えなくなるまで小さくする
         //while (ScaleX > 0.01f)
         //{
         //    // 0.01秒ゲームループに制御を返す
@@ -28,6 +30,16 @@ public class breakBlock : MonoBehaviour {
         //    MulVelocity(1f);
         //}
     }
+
+    void Update()
+    {
+        timeElapsed += Time.deltaTime;
+        if (TIME_OUT <= timeElapsed)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
     void OnTriggerEnter2D(Collider2D collider)
     {

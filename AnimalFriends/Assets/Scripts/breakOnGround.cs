@@ -19,6 +19,9 @@ public class breakOnGround : MonoBehaviour {
     GameObject go;
 
     [SerializeField]
+    string objectName;
+
+    [SerializeField]
     GameObject perticle;
 
     /// プレハブ
@@ -32,8 +35,7 @@ public class breakOnGround : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        go = GameObject.Find("break_ground");
-        
+        go = GameObject.Find(objectName);
 	}
 	
 	// Update is called once per frame
@@ -50,25 +52,24 @@ public class breakOnGround : MonoBehaviour {
                 {
                     Add(perticle, go.transform.localPosition.x, go.transform.localPosition.y);
                 }
-                destroyObj();
+                Destroy(gameObject);
             }
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        onGround = true;
+        if (other.gameObject.tag == "Player")
+        {
+            onGround = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        onGround = false;
-        timeElapsed = 0;
+        if (other.gameObject.tag == "Player")
+        {
+            onGround = false;
+        }
     }
-
-    void destroyObj()
-    {
-        Destroy(gameObject);
-    }
-
 }
