@@ -2,29 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathSwamp : MonoBehaviour {
-
+public class DeathSwamp : MonoBehaviour
+{
     GameObject go;
     [SerializeField]
-    int Damage;
+    int damage;
 
     // Use this for initialization
-	void Start () {
+    void Start()
+    {
         go = GameObject.FindGameObjectWithTag("Player");
-    
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.tag == "Player")
         {
-            go.GetComponent<PlayerController>().FuncDamege(Damage);
+            go.GetComponent<PlayerController>().Damage(damage);
         }
     }
 }
