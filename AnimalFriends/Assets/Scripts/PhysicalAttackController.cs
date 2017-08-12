@@ -26,7 +26,7 @@ public class PhysicalAttackController : MonoBehaviour
         Vector2 scale = transform.localScale;
         if (!isRight)
         {
-            scale.x = -1.0f;
+            scale.x = Math.Abs(scale.x) * -1;
         }
         transform.localScale = scale;
     }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class breakOnGround : MonoBehaviour {
+public class breakOnGround : MonoBehaviour
+{
 
     /// <summary>
     /// 地面の破壊までの時間
@@ -33,17 +34,17 @@ public class breakOnGround : MonoBehaviour {
         Instantiate(perticle, position, Quaternion.identity);
     }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         go = GameObject.Find(objectName);
-	}
-	
-	// Update is called once per frame
+    }
+
+    // Update is called once per frame
     void Update()
     {
         if (onGround == true)
         {
-            Debug.Log(timeElapsed);
             timeElapsed += Time.deltaTime;
             if (TIME_OUT <= timeElapsed)
             {

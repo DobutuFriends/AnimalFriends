@@ -24,12 +24,12 @@ TagManager:
   - 
   - wall
   - 
+  - block
+  - 
+  - character
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - effect
   - 
   - 
   - 
@@ -43,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: character
+    uniqueID: 2870542243
+    locked: 0
+  - name: effect
+    uniqueID: 1479437069
     locked: 0
