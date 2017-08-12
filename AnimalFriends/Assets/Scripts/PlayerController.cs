@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpPower;
     public float attackInterval;
+    public float dashReceptionTime;
     private Rigidbody2D rb;
     private Animator animator;
     enum State { Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, };
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     AttackState attackState;
     Direction direction = Direction.Right;
     float coolTime = 0;
+    float idlingTime = 0;
+    bool isDash = false;
 
     public int maxHp;
     int hp;
@@ -69,20 +72,38 @@ public class PlayerController : MonoBehaviour
             return rb.velocity;
         }
 
+        if (idlingTime < dashReceptionTime &&
+            ((Input.GetKeyDown("left") && direction == Direction.Left) || (Input.GetKeyDown("right") && direction == Direction.Right)))
+        {
+            isDash = true;
+        }
+
         if (Input.GetKey("left"))
         {
+            idlingTime = 0;
             direction = Direction.Left;
             velocityX = -speed;
+            if (isDash)
+            {
+                velocityX *= 2;
+            }
             scale.x = Math.Abs(scale.x) * -1;
         }
         else if (Input.GetKey("right"))
         {
+            idlingTime = 0;
             direction = Direction.Right;
             velocityX = speed;
+            if (isDash)
+            {
+                velocityX *= 2;
+            }
             scale.x = Math.Abs(scale.x);
         }
         else
         {
+            isDash = false;
+            idlingTime += Time.deltaTime;
             velocityX = 0;
         }
 
