@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
         hpGauge = gameObject.transform.Find("hpGauge").gameObject;
         defaultGaugeWidth = hpGauge.transform.localScale.x;
 
@@ -60,20 +61,25 @@ public class PlayerController : MonoBehaviour
         SummarSolt();
         Vector2 scale = transform.localScale;
         Vector2 newVelocity;
-        float velocityX = 0;
+        float velocityX = rb.velocity.x;
         float velocityY = rb.velocity.y;
+
+        if (coolTime > 0 && state == State.KnockBack)
+        {
+            return rb.velocity;
+        }
 
         if (Input.GetKey("left"))
         {
             direction = Direction.Left;
             velocityX = -speed;
-            scale.x = -1;
+            scale.x = Math.Abs(scale.x) * -1;
         }
         else if (Input.GetKey("right"))
         {
             direction = Direction.Right;
             velocityX = speed;
-            scale.x = 1;
+            scale.x = Math.Abs(scale.x);
         }
         else
         {
@@ -82,27 +88,10 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = scale;
 
-        if (coolTime > 0)
-        {
-            if (state == State.Idle || state == State.Walk)
-            {
-                // 一旦攻撃中も移動できるようにした。 仕様次第
-                //velocityX = 0;
-            }
-            else if (state == State.KnockBack)
-            {
-                velocityX = rb.velocity.x;
-            }
-            newVelocity = new Vector2(velocityX, velocityY);
-            rb.velocity = newVelocity;
-            return newVelocity;
-        }
-
         if (Input.GetKeyDown("c"))
         {
             velocityY = jumpPower;
         }
-
 
         newVelocity = new Vector2(velocityX, velocityY);
         rb.velocity = newVelocity;
@@ -224,11 +213,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    // クソ実装
     private void SummarSoltStart()
     {
-        transform.Rotate(new Vector3(0, 0, 20));
+        transform.Rotate(new Vector3(0, 0, 24));
         float velocityX = rb.velocity.x; ;
         float velocityY = jumpPower / 2;
         rb.velocity = new Vector2(velocityX, velocityY);
@@ -237,7 +224,7 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.rotation != Quaternion.Euler(0, 0, 0))
         {
-            transform.Rotate(new Vector3(0, 0, 20));
+            transform.Rotate(new Vector3(0, 0, 24));
         }
     }
 }
