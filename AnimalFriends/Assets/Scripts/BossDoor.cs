@@ -23,10 +23,13 @@ public class BossDoor : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (EnterFlagLeft == true && EnterFlagRight == true)
+        if (other.gameObject.tag == "Player")
         {
-            StartCoroutine(FuncDisplay());
-            bc.enabled = true;
+            if (EnterFlagLeft == true && EnterFlagRight == true)
+            {
+                StartCoroutine(FuncDisplay());
+                bc.enabled = true;
+            }
         }
     }
 

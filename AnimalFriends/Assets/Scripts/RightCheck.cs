@@ -14,6 +14,9 @@ public class RightCheck : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        bd.EnterFlagRight = true;
+        if (other.gameObject.tag == "Player")
+        {
+            bd.EnterFlagRight = true;
+        }
     }
 }

@@ -13,6 +13,9 @@ public class LeftCheck : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        bd.EnterFlagLeft = true;
+        if (other.gameObject.tag == "Player")
+        {
+            bd.EnterFlagLeft = true;
+        }
     }
 }
