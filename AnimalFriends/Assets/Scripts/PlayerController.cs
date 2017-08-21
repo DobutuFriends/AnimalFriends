@@ -203,10 +203,7 @@ public class PlayerController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Enemy":
-                hp -= 1;
-                Vector2 newGaugeScale = hpGauge.transform.localScale;
-                newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
-                hpGauge.transform.localScale = newGaugeScale;
+                Damage(1);
                 coolTime = 0.5f;
                 if (transform.localPosition.x < collision.transform.localPosition.x)
                 {
@@ -217,15 +214,6 @@ public class PlayerController : MonoBehaviour
                     rb.velocity = new Vector2(500.0f, 1000.0f);
                 }
                 state = State.KnockBack;
-
-                if (hp <= 0)
-                {
-                    hp = maxHp;
-                    newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
-                    hpGauge.transform.localScale = newGaugeScale;
-
-                    gameObject.transform.localPosition = new Vector2(-1000.0f, 300.0f);
-                }
                 break;
             case "MapObject":
                 break;
@@ -241,11 +229,36 @@ public class PlayerController : MonoBehaviour
         float velocityY = jumpPower / 2;
         rb.velocity = new Vector2(velocityX, velocityY);
     }
+
     private void SummarSolt()
     {
         if (transform.rotation != Quaternion.Euler(0, 0, 0))
         {
             transform.Rotate(new Vector3(0, 0, 24));
         }
+    }
+
+    public void Damage(int damage)
+    {
+        hp -= damage;
+        Vector2 newGaugeScale = hpGauge.transform.localScale;
+        newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
+        hpGauge.transform.localScale = newGaugeScale;
+
+        if (hp <= 0)
+        {
+            Dead();
+        }
+    }
+
+    public void Dead()
+    {
+        hp = maxHp;
+
+        Vector2 newGaugeScale = hpGauge.transform.localScale;
+        newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
+        hpGauge.transform.localScale = newGaugeScale;
+
+        gameObject.transform.localPosition = new Vector2(-1000.0f, 300.0f);
     }
 }
