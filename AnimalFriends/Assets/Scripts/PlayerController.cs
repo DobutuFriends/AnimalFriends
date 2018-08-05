@@ -31,10 +31,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     PhysicalAttackController physicalAttack1, physicalAttack2, physicalAttack3;
 
+    TextController textController;
+
     // Use this for initialization
     void Start()
     {
         AudioManager.Instance.PlaySE("start01", 0.2f);
+
+        textController = GameObject.Find("windowText").GetComponent<TextController>();
+        textController.UpdateNewText("いきましょう！");
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
         state = CalcState(newVelocity.x, newVelocity.y);
         Debug.Log(state);
         animator.SetInteger("state", (int)state);
+
         coolTime -= Time.deltaTime;
     }
 
@@ -118,15 +124,23 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpCount == 0)
             {
+                textController.UpdateNewText("えい！");
                 AudioManager.Instance.PlaySE("jump01", 0.2f);
             }
             else
             {
+                textController.UpdateNewText("とお！");
                 AudioManager.Instance.PlaySE("jump02", 0.2f);
             }
 
             velocityY = jumpPower;
             jumpCount++;
+        }
+
+
+        if (Input.GetKeyDown("z"))
+        {
+            textController.UpdateNewText("もっといろんなシチュエーションで色々喋らせてみたいですね");
         }
 
         newVelocity = new Vector2(velocityX, velocityY);
