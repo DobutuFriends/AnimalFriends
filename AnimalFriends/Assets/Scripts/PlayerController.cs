@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float dashReceptionTime;
     private Rigidbody2D rb;
     private Animator animator;
-    enum State { Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, };
+    enum State { Init = -1, Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, };
     enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, SummerSalt = 4, }
     enum Direction { Right = 0, Left = 1, };
 
@@ -33,38 +33,48 @@ public class PlayerController : MonoBehaviour
 
     TextController textController;
 
+    private void Awake()
+    {
+        textController = GameObject.Find("windowText").GetComponent<TextController>();
+        hpGauge = gameObject.transform.Find("hpGauge").gameObject;
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
     // Use this for initialization
     void Start()
     {
-        AudioManager.Instance.PlaySE("start01", 0.2f);
-
-        textController = GameObject.Find("windowText").GetComponent<TextController>();
-        textController.UpdateNewText("いきましょう！");
-
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-
-        hpGauge = gameObject.transform.Find("hpGauge").gameObject;
         defaultGaugeWidth = hpGauge.transform.localScale.x;
-
-        state = State.Idle;
-        attackState = AttackState.Idle;
-        hp = maxHp;
-        jumpCount = 0;
 
         Observable.EveryUpdate()
             .Where(_ => Input.GetKeyDown("x"))
             .Sample(TimeSpan.FromSeconds(0.1f))
             .Subscribe(x => Attack())
             .AddTo(this);
+
+        state = State.Init;
+    }
+
+    private void Init()
+    {
+        state = State.Idle;
+        attackState = AttackState.Idle;
+        hp = maxHp;
+        jumpCount = 0;
+
+        AudioManager.Instance.PlaySE("start01", 0.2f);
+        textController.UpdateNewText("いきましょう！");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (state == State.Init)
+        {
+            Init();
+        }
         Vector2 newVelocity = Move();
         state = CalcState(newVelocity.x, newVelocity.y);
-        Debug.Log(state);
         animator.SetInteger("state", (int)state);
 
         coolTime -= Time.deltaTime;
@@ -135,12 +145,6 @@ public class PlayerController : MonoBehaviour
 
             velocityY = jumpPower;
             jumpCount++;
-        }
-
-
-        if (Input.GetKeyDown("z"))
-        {
-            textController.UpdateNewText("もっといろんなシチュエーションで色々喋らせてみたいですね");
         }
 
         newVelocity = new Vector2(velocityX, velocityY);
