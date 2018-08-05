@@ -47,6 +47,9 @@ TagManager:
   - name: character
     uniqueID: 2870542243
     locked: 0
+  - name: front map
+    uniqueID: 1909427037
+    locked: 0
   - name: effect
     uniqueID: 1479437069
     locked: 0

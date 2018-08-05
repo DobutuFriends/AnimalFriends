@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     int hp;
     GameObject hpGauge;
     float defaultGaugeWidth;
+    int jumpCount;
 
     [SerializeField]
     PhysicalAttackController physicalAttack1, physicalAttack2, physicalAttack3;
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        AudioManager.Instance.PlaySE("start01", 0.2f);
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
         state = State.Idle;
         attackState = AttackState.Idle;
         hp = maxHp;
+        jumpCount = 0;
 
         Observable.EveryUpdate()
             .Where(_ => Input.GetKeyDown("x"))
@@ -55,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 newVelocity = Move();
         state = CalcState(newVelocity.x, newVelocity.y);
+        Debug.Log(state);
         animator.SetInteger("state", (int)state);
         coolTime -= Time.deltaTime;
     }
@@ -109,9 +114,19 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = scale;
 
-        if (Input.GetKeyDown("c"))
+        if (Input.GetKeyDown("c") && jumpCount < 2)
         {
+            if (jumpCount == 0)
+            {
+                AudioManager.Instance.PlaySE("jump01", 0.2f);
+            }
+            else
+            {
+                AudioManager.Instance.PlaySE("jump02", 0.2f);
+            }
+
             velocityY = jumpPower;
+            jumpCount++;
         }
 
         newVelocity = new Vector2(velocityX, velocityY);
@@ -125,11 +140,11 @@ public class PlayerController : MonoBehaviour
         {
             return State.KnockBack;
         }
-        if (velocityY > 0)
+        if (velocityY > 0.0f)
         {
             return State.JumpUp;
         }
-        else if (velocityY < 0)
+        else if (velocityY < 0.0f)
         {
             return State.JumpDown;
         }
@@ -216,6 +231,7 @@ public class PlayerController : MonoBehaviour
                 state = State.KnockBack;
                 break;
             case "MapObject":
+                jumpCount = 0;
                 break;
             default:
                 break;
