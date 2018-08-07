@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float dashReceptionTime;
     private Rigidbody2D rb;
     private Animator animator;
-    enum State { Init = -1, Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, };
+    enum State { Init = -1, Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, Squat = 5, };
     enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, SummerSalt = 4, }
     enum Direction { Right = 0, Left = 1, };
 
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     Direction direction = Direction.Right;
     float coolTime = 0;
     float idlingTime = 0;
+    float squatIdlingTime = 0;
     bool isDash = false;
 
     public int maxHp;
@@ -125,6 +126,15 @@ public class PlayerController : MonoBehaviour
         {
             isDash = false;
             idlingTime += Time.deltaTime;
+
+            if (Input.GetKey("down"))
+            {
+                squatIdlingTime += Time.deltaTime;
+            }
+            else
+            {
+                squatIdlingTime = 0;
+            }
             velocityX = 0;
         }
 
@@ -168,6 +178,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (System.Math.Abs(velocityX) < 1)
         {
+            if (squatIdlingTime > 0)
+            {
+                return State.Squat;
+            }
             return State.Idle;
         }
         else
