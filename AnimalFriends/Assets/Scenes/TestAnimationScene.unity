@@ -979,6 +979,41 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61059480329880834, guid: bcd0348e67a904829800542d42d67c37,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114121202645645644, guid: bcd0348e67a904829800542d42d67c37,
+        type: 2}
+      propertyPath: defaultColliderSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 114121202645645644, guid: bcd0348e67a904829800542d42d67c37,
+        type: 2}
+      propertyPath: defaultColliderOffset
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 114121202645645644, guid: bcd0348e67a904829800542d42d67c37,
+        type: 2}
+      propertyPath: defaultColliderOffsetY
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 61059480329880834, guid: bcd0348e67a904829800542d42d67c37,
+        type: 2}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61059480329880834, guid: bcd0348e67a904829800542d42d67c37,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 61059480329880834, guid: bcd0348e67a904829800542d42d67c37,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd0348e67a904829800542d42d67c37, type: 2}
   m_IsPrefabAsset: 0

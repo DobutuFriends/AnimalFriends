@@ -9,8 +9,11 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     public float attackInterval;
     public float dashReceptionTime;
+    public float defaultColliderSize;
+    public float defaultColliderOffsetY;
     private Rigidbody2D rb;
     private Animator animator;
+    private BoxCollider2D collider;
     enum State { Init = -1, Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, Squat = 5, };
     enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, SummerSalt = 4, }
     enum Direction { Right = 0, Left = 1, };
@@ -40,6 +43,7 @@ public class PlayerController : MonoBehaviour
         hpGauge = gameObject.transform.Find("hpGauge").gameObject;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     // Use this for initialization
@@ -77,6 +81,16 @@ public class PlayerController : MonoBehaviour
         Vector2 newVelocity = Move();
         state = CalcState(newVelocity.x, newVelocity.y);
         animator.SetInteger("state", (int)state);
+
+        Vector2 colliderSize = new Vector2(defaultColliderSize, defaultColliderSize);
+        Vector2 colliderOffset = new Vector2(0, defaultColliderOffsetY);
+        if (state == State.Squat)
+        {
+            colliderSize.y = defaultColliderSize / 2;
+            colliderOffset.y = defaultColliderOffsetY * 1.5f;
+        }
+        collider.size = colliderSize;
+        collider.offset = colliderOffset;
 
         coolTime -= Time.deltaTime;
     }

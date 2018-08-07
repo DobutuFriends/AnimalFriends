@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{079170F7-698D-E174-709E-17580FFD837D}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ColliderRenedrer.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="14" Column="92" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="89" Column="53" />
       <File FileName="Assets/Scripts/PhysicalAttackController.cs" Line="23" Column="2" />
       <File FileName="Assets/Scripts/breakOnGround.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/DeathSwamp.cs" Line="26" Column="6" />
@@ -10,7 +10,10 @@
       <File FileName="Assets/Scripts/AudioManager.cs" Line="18" Column="57" />
       <File FileName="Assets/Scripts/SingletonMonoBehaviour.cs" Line="16" Column="18" />
       <File FileName="Assets/Scripts/CameraController.cs" Line="14" Column="1" />
-      <File FileName="Assets/Scripts/TextController.cs" Line="22" Column="6" />
+      <File FileName="Assets/Scripts/TextController.cs" Line="35" Column="6" />
+      <File FileName="Assets/Scripts/Collider2dVisualizationer.cs" Line="49" Column="79" />
+      <File FileName="Assets/Scripts/Collider2dVisualizationTest.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ColliderRenedrer.cs" Line="104" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

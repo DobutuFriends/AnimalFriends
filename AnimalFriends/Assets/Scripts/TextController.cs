@@ -33,7 +33,6 @@ public class TextController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isTalking);
         time += Time.deltaTime;
         if (textIndex < newText.Length)
         {

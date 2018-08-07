@@ -141,6 +141,9 @@ public class ColliderRenedrer : MonoBehaviour
         //ColliderRenedrerと同じオブジェクトにLineRendererを作成
         LineRenderer lineRenderer = colliderRenedrer.gameObject.AddComponent<LineRenderer>();
 
+        // 最前面表示にする
+        lineRenderer.sortingLayerName = "effect";
+
         //レイヤーとマテリアル設定
         //lineRenderer.sortingLayerName = ""; //レイヤーを指定
         lineRenderer.sortingOrder = 100;
