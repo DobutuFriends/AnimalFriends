@@ -7,6 +7,8 @@ public class TextController : MonoBehaviour
 {
 
     private Animator standYukariAnimator;
+    private Animator eyeAnimator;
+    private Animator mouseAnimator;
     private Text windowText;
     string newText;
     int textIndex;
@@ -17,12 +19,18 @@ public class TextController : MonoBehaviour
 
     bool isTalking;
 
+    public enum EyeType { Normal = 1, Smile = 2, Anger = 3, Wink = 4, Cross = 5, };
+    private EyeType eyeType = EyeType.Normal;
+    public enum Priority { Lowest = 1, Low = 2, Normal = 3, High = 4, Highest = 5, };
+    private Priority priority = Priority.Lowest;
+
     // Use this for initialization
     void Start()
     {
         isTalking = false;
         windowText = this.GetComponent<Text>();
-        standYukariAnimator = GameObject.Find("stand_yukari").GetComponent<Animator>();
+        eyeAnimator = GameObject.Find("stand_yukari_eye").GetComponent<Animator>();
+        mouseAnimator = GameObject.Find("stand_yukari_mouse").GetComponent<Animator>();
 
         windowText.text = "";
         newText = "１２３４５６７８９０１２３４５６７８９０１２\n横幅全角２２文字まで入ります入りますそれ以上は自動改行で、合計３行まで入ります入ります入ります入ります";
@@ -48,14 +56,22 @@ public class TextController : MonoBehaviour
         {
             isTalking = false;
         }
-        standYukariAnimator.SetBool("isTalking", isTalking);
+        Debug.Log(eyeType);
+        mouseAnimator.SetBool("isTalking", isTalking);
+        eyeAnimator.SetInteger("eyeType", (int)eyeType);
     }
 
-    public void UpdateNewText(string newText, float addTextInterval = 0.1f)
+    public void UpdateNewText(string newText, EyeType eyeType = EyeType.Normal, Priority priority = Priority.Normal, float addTextInterval = 0.1f)
     {
+        if (textIndex < this.newText.Length && this.priority > priority)
+        {
+            return;
+        }
         isTalking = true;
         this.newText = newText;
         this.addTextInterval = addTextInterval;
+        this.priority = priority;
+        this.eyeType = eyeType;
         windowText.text = "";
         textIndex = 0;
     }

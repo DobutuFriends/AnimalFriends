@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         jumpCount = 0;
 
         AudioManager.Instance.PlaySE("start01", 0.2f);
-        textController.UpdateNewText("いきましょう！");
+        textController.UpdateNewText("いきましょう！", TextController.EyeType.Wink);
     }
 
     // Update is called once per frame
@@ -158,17 +158,39 @@ public class PlayerController : MonoBehaviour
         {
             if (jumpCount == 0)
             {
-                textController.UpdateNewText("えい！");
+                textController.UpdateNewText("えい！", TextController.EyeType.Cross, TextController.Priority.Low);
                 AudioManager.Instance.PlaySE("jump01", 0.2f);
             }
             else
             {
-                textController.UpdateNewText("とお！");
+                textController.UpdateNewText("とお！", TextController.EyeType.Anger, TextController.Priority.Low);
                 AudioManager.Instance.PlaySE("jump02", 0.2f);
             }
 
             velocityY = jumpPower;
             jumpCount++;
+        }
+
+        // Debug
+        if (Input.GetKeyDown("1"))
+        {
+            textController.UpdateNewText("結月ゆかりです。", TextController.EyeType.Normal, TextController.Priority.Low);
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            textController.UpdateNewText("うふふ", TextController.EyeType.Smile, TextController.Priority.Low);
+        }
+        else if (Input.GetKeyDown("3"))
+        {
+            textController.UpdateNewText("闇の炎に抱かれて消えろっ！", TextController.EyeType.Anger, TextController.Priority.Low);
+        }
+        else if (Input.GetKeyDown("4"))
+        {
+            textController.UpdateNewText("結月ゆかりです♪", TextController.EyeType.Wink, TextController.Priority.Low);
+        }
+        else if (Input.GetKeyDown("5"))
+        {
+            textController.UpdateNewText("バカなっ", TextController.EyeType.Cross, TextController.Priority.Low);
         }
 
         newVelocity = new Vector2(velocityX, velocityY);
