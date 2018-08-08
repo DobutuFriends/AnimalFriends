@@ -21,6 +21,7 @@ public class TextController : MonoBehaviour
 
     public enum EyeType { Normal = 1, Smile = 2, Anger = 3, Wink = 4, Cross = 5, };
     private EyeType eyeType = EyeType.Normal;
+    private EyeType newEyeType = EyeType.Normal;
     public enum Priority { Lowest = 1, Low = 2, Normal = 3, High = 4, Highest = 5, };
     private Priority priority = Priority.Lowest;
 
@@ -56,9 +57,13 @@ public class TextController : MonoBehaviour
         {
             isTalking = false;
         }
-        Debug.Log(eyeType);
         mouseAnimator.SetBool("isTalking", isTalking);
-        eyeAnimator.SetInteger("eyeType", (int)eyeType);
+
+        if (eyeType != newEyeType)
+        {
+            eyeType = newEyeType;
+            eyeAnimator.SetInteger("eyeType", (int)eyeType);
+        }
     }
 
     public void UpdateNewText(string newText, EyeType eyeType = EyeType.Normal, Priority priority = Priority.Normal, float addTextInterval = 0.1f)
@@ -71,7 +76,7 @@ public class TextController : MonoBehaviour
         this.newText = newText;
         this.addTextInterval = addTextInterval;
         this.priority = priority;
-        this.eyeType = eyeType;
+        this.newEyeType = eyeType;
         windowText.text = "";
         textIndex = 0;
     }
