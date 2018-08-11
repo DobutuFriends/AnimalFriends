@@ -1,21 +1,23 @@
 ﻿<Properties StartupConfiguration="{079170F7-698D-E174-709E-17580FFD837D}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MoveEnemyController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CommandObjectController.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="89" Column="53" />
       <File FileName="Assets/Scripts/PhysicalAttackController.cs" Line="23" Column="2" />
       <File FileName="Assets/Scripts/breakOnGround.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/DeathSwamp.cs" Line="26" Column="6" />
       <File FileName="Assets/Plugins/UniRx/Scripts/UnityEngineBridge/InspectorDisplayDrawer.cs" Line="171" Column="21" />
       <File FileName="Assets/Scripts/AudioManager.cs" Line="18" Column="57" />
       <File FileName="Assets/Scripts/SingletonMonoBehaviour.cs" Line="16" Column="18" />
-      <File FileName="Assets/Scripts/CameraController.cs" Line="14" Column="1" />
-      <File FileName="Assets/Scripts/TextController.cs" Line="35" Column="6" />
+      <File FileName="Assets/Scripts/CameraController.cs" Line="12" Column="6" />
+      <File FileName="Assets/Scripts/TextController.cs" Line="63" Column="10" />
       <File FileName="Assets/Scripts/Collider2dVisualizationer.cs" Line="49" Column="79" />
       <File FileName="Assets/Scripts/Collider2dVisualizationTest.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ColliderRenedrer.cs" Line="144" Column="20" />
-      <File FileName="Assets/Scripts/BackGroundController.cs" Line="27" Column="86" />
+      <File FileName="Assets/Scripts/BackGroundController.cs" Line="29" Column="55" />
       <File FileName="Assets/Scripts/MoveEnemyController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="146" Column="1" />
+      <File FileName="Assets/Scripts/NPCController.cs" Line="148" Column="23" />
+      <File FileName="Assets/Scripts/CommandObjectController.cs" Line="11" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

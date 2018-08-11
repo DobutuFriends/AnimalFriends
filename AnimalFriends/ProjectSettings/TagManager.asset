@@ -7,6 +7,8 @@ TagManager:
   - PlayerAttack
   - MapObject
   - Enemy
+  - NPC
+  - CommandObject
   layers:
   - Default
   - TransparentFX

@@ -15,11 +15,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private BoxCollider2D collider;
     enum State { Init = -1, Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, Squat = 5, };
-    enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, SummerSalt = 4, }
     enum Direction { Right = 0, Left = 1, };
 
     State state;
-    AttackState attackState;
     Direction direction = Direction.Right;
     float coolTime = 0;
     float idlingTime = 0;
@@ -50,20 +48,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         defaultGaugeWidth = hpGauge.transform.localScale.x;
-
-        Observable.EveryUpdate()
-            .Where(_ => Input.GetKeyDown("x"))
-            .Sample(TimeSpan.FromSeconds(0.1f))
-            .Subscribe(x => Attack())
-            .AddTo(this);
-
         state = State.Init;
     }
 
     private void Init()
     {
         state = State.Idle;
-        attackState = AttackState.Idle;
         hp = maxHp;
         jumpCount = 0;
 
@@ -225,61 +215,6 @@ public class PlayerController : MonoBehaviour
             return State.Walk;
         }
     }
-
-    private void Attack()
-    {
-        if (coolTime > 0)
-        {
-            return;
-        }
-        Vector2 attackPosition = transform.position;
-        Quaternion attackRotation = transform.rotation;
-
-        if (Input.GetKey("up"))
-        {
-            SummarSoltStart();
-        }
-
-        if (direction == Direction.Right)
-        {
-            attackPosition.x += 80;
-            attackPosition.y -= 20;
-        }
-        else
-        {
-            attackPosition.x -= 80;
-            attackPosition.y -= 20;
-        }
-
-        switch (attackState)
-        {
-            case AttackState.Idle:
-                InstantiatePhysicalAttack(physicalAttack1, attackPosition, attackRotation);
-                attackState = AttackState.Attack1;
-                break;
-            case AttackState.Attack1:
-                InstantiatePhysicalAttack(physicalAttack2, attackPosition, attackRotation);
-                attackState = AttackState.Attack2;
-                break;
-            case AttackState.Attack2:
-                InstantiatePhysicalAttack(physicalAttack3, attackPosition, attackRotation);
-                attackState = AttackState.Attack3;
-                break;
-            case AttackState.Attack3:
-                InstantiatePhysicalAttack(physicalAttack1, attackPosition, attackRotation);
-                attackState = AttackState.Attack1;
-                break;
-        }
-        coolTime = attackInterval;
-    }
-
-    private void InstantiatePhysicalAttack(PhysicalAttackController PhysicalAttack, Vector2 position, Quaternion rotation)
-    {
-        PhysicalAttackController physicalAttackController = Instantiate(PhysicalAttack, position, rotation);
-        physicalAttackController.SetDirection(direction == Direction.Right);
-        physicalAttackController.transform.parent = transform;
-    }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357736757699326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -421, y: 165, z: 0}
+  m_LocalPosition: {x: 0, y: 165, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4291334241751644}
@@ -152,8 +152,8 @@ MonoBehaviour:
   jumpPower: 1500
   attackInterval: 0.2
   dashReceptionTime: 0.2
-  defaultColliderSize: 0
-  defaultColliderOffsetY: 0
+  defaultColliderSize: 64
+  defaultColliderOffsetY: -32
   maxHp: 5
   physicalAttack1: {fileID: 114623369196607380, guid: 6c564c7c1ace044c8a942085629bf148,
     type: 2}
