@@ -19,19 +19,20 @@ public class TextController : MonoBehaviour
 
     bool isTalking;
 
-    public enum EyeType { Normal = 1, Smile = 2, Anger = 3, Wink = 4, Cross = 5, };
+    public enum EyeType { Normal = 1, Smile = 2, Anger = 3, Wink = 4, Cross = 5, Star = 6, };
+    public enum Priority { Lowest = 1, Low = 2, Normal = 3, High = 4, Highest = 5, };
     private EyeType eyeType = EyeType.Normal;
     private EyeType newEyeType = EyeType.Normal;
-    public enum Priority { Lowest = 1, Low = 2, Normal = 3, High = 4, Highest = 5, };
     private Priority priority = Priority.Lowest;
+    public string charaName;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         isTalking = false;
         windowText = this.GetComponent<Text>();
-        eyeAnimator = GameObject.Find("stand_yukari_eye").GetComponent<Animator>();
-        mouseAnimator = GameObject.Find("stand_yukari_mouse").GetComponent<Animator>();
+        eyeAnimator = GameObject.Find("stand_" + charaName + "_eye").GetComponent<Animator>();
+        mouseAnimator = GameObject.Find("stand_" + charaName + "_mouse").GetComponent<Animator>();
 
         windowText.text = "";
         newText = "１２３４５６７８９０１２３４５６７８９０１２\n横幅全角２２文字まで入ります入りますそれ以上は自動改行で、合計３行まで入ります入ります入ります入ります";

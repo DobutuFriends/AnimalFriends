@@ -24,9 +24,6 @@ public class PlayerController : MonoBehaviour
     float squatIdlingTime = 0;
     bool isDash = false;
 
-    public int maxHp;
-    int hp;
-    GameObject hpGauge;
     float defaultGaugeWidth;
     int jumpCount;
 
@@ -37,8 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        textController = GameObject.Find("windowText").GetComponent<TextController>();
-        hpGauge = gameObject.transform.Find("hpGauge").gameObject;
+        textController = GameObject.Find("windowTextLeft").GetComponent<TextController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -47,14 +43,12 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        defaultGaugeWidth = hpGauge.transform.localScale.x;
         state = State.Init;
     }
 
     private void Init()
     {
         state = State.Idle;
-        hp = maxHp;
         jumpCount = 0;
 
         AudioManager.Instance.PlaySE("start01", 0.2f);
@@ -221,7 +215,6 @@ public class PlayerController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Enemy":
-                Damage(1);
                 coolTime = 0.5f;
                 if (transform.localPosition.x < collision.transform.localPosition.x)
                 {
@@ -255,29 +248,5 @@ public class PlayerController : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 0, 24));
         }
-    }
-
-    public void Damage(int damage)
-    {
-        hp -= damage;
-        Vector2 newGaugeScale = hpGauge.transform.localScale;
-        newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
-        hpGauge.transform.localScale = newGaugeScale;
-
-        if (hp <= 0)
-        {
-            Dead();
-        }
-    }
-
-    public void Dead()
-    {
-        hp = maxHp;
-
-        Vector2 newGaugeScale = hpGauge.transform.localScale;
-        newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
-        hpGauge.transform.localScale = newGaugeScale;
-
-        gameObject.transform.localPosition = new Vector2(-1000.0f, 300.0f);
     }
 }

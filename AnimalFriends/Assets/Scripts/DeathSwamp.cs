@@ -23,9 +23,5 @@ public class DeathSwamp : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            go.GetComponent<PlayerController>().Damage(damage);
-        }
     }
 }

@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: stand_yukari_mouse_action
+  m_Name: stand_maki_eye_cross
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,11 +19,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 3a1c59843f25246769ea7a9c378e8f08, type: 3}
-    - time: 0.083333336
-      value: {fileID: 21300000, guid: 5a23210b1f4f144b4ab2bb69927b962e, type: 3}
-    - time: 0.18333334
-      value: {fileID: 21300000, guid: 3a1c59843f25246769ea7a9c378e8f08, type: 3}
+      value: {fileID: 21300000, guid: 8d7a54c23be8c4499b1765a06e716473, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -43,15 +39,13 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 3a1c59843f25246769ea7a9c378e8f08, type: 3}
-    - {fileID: 21300000, guid: 5a23210b1f4f144b4ab2bb69927b962e, type: 3}
-    - {fileID: 21300000, guid: 3a1c59843f25246769ea7a9c378e8f08, type: 3}
+    - {fileID: 21300000, guid: 8d7a54c23be8c4499b1765a06e716473, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.2
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

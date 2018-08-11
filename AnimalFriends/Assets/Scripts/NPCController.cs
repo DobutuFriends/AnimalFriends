@@ -32,8 +32,12 @@ public class NPCController : MonoBehaviour
     float nextMotionTime = 0;
     int movementIndex = 0;
 
+    TextController textController;
+
     private void Awake()
     {
+        textController = GameObject.Find("windowTextRight").GetComponent<TextController>();
+        Debug.Log(textController);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -43,6 +47,7 @@ public class NPCController : MonoBehaviour
     void Start()
     {
         state = State.Init;
+        textController.UpdateNewText("ギュンギュンいくよー！", TextController.EyeType.Cross);
     }
 
     private void Init()
@@ -92,6 +97,7 @@ public class NPCController : MonoBehaviour
                 rb.velocity = newVelocity;
                 return newVelocity;
             }
+            textController.UpdateNewText("ゴー！", TextController.EyeType.Cross, TextController.Priority.Low);
             movementType = new Dictionary<string, bool>(nextMovementType);
             nextMovementType.Clear();
             motionTime = nextMotionTime;
@@ -117,6 +123,10 @@ public class NPCController : MonoBehaviour
 
         if (movementType["isSquat"])
         {
+            if (squatIdlingTime < 0.1f)
+            {
+                textController.UpdateNewText("ちょうちょだ！", TextController.EyeType.Star, TextController.Priority.Low);
+            }
             squatIdlingTime += Time.deltaTime;
         }
         else
@@ -127,6 +137,15 @@ public class NPCController : MonoBehaviour
 
         if (movementType["isJump"] && !movementType["isJumped"] && jumpCount < 2)
         {
+            if (jumpCount == 0)
+            {
+                textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
+            }
+            else
+            {
+                textController.UpdateNewText("やあ！", TextController.EyeType.Anger, TextController.Priority.Low);
+            }
+
             movementType["isJumped"] = true;
             velocityY = jumpPower;
             jumpCount++;
