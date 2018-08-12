@@ -5,10 +5,7 @@ using System;
 
 public class NPCController : MonoBehaviour
 {
-    public float speed;
-    public float jumpPower;
-    public float defaultColliderSize;
-    public float defaultColliderOffsetY;
+    public float speed, jumpPower, defaultColliderSize, defaultColliderOffsetY;
 
     private Rigidbody2D rb;
     private Animator animator;
