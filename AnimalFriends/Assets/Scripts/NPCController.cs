@@ -65,6 +65,7 @@ public class NPCController : MonoBehaviour
         }
         Vector2 newVelocity = Move();
         state = CalcState(newVelocity.x, newVelocity.y);
+        Debug.Log(state);
         animator.SetInteger("state", (int)state);
 
         Vector2 colliderSize = new Vector2(defaultColliderSize, defaultColliderSize);
@@ -85,7 +86,7 @@ public class NPCController : MonoBehaviour
     {
         Vector2 scale = transform.localScale;
         Vector2 newVelocity;
-        float velocityX = rb.velocity.x;
+        float velocityX = 0;
         float velocityY = rb.velocity.y;
 
         if (movementType.Count == 0 || motionTime < 0.1f)
@@ -123,6 +124,8 @@ public class NPCController : MonoBehaviour
 
         if (movementType["isSquat"])
         {
+            Debug.Log(velocityX);
+            Debug.Log("squaaaa");
             if (squatIdlingTime < 0.1f)
             {
                 textController.UpdateNewText("ちょうちょだ！", TextController.EyeType.Star, TextController.Priority.Low);

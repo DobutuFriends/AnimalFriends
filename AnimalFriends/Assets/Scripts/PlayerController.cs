@@ -227,6 +227,18 @@ public class PlayerController : MonoBehaviour
                 state = State.KnockBack;
                 break;
             case "MapObject":
+                //jumpCount = 0;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "MapObject":
                 jumpCount = 0;
                 break;
             default:
