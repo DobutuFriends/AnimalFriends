@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50107923943768258}
   - component: {fileID: 61059480329880834}
   - component: {fileID: 114121202645645644}
+  - component: {fileID: 61762922266165628}
   m_Layer: 18
   m_Name: yukari
   m_TagString: Player
@@ -89,6 +90,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 64, y: 64}
   m_EdgeRadius: 0
+--- !u!61 &61762922266165628
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357736757699326}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.33767796, y: -55.524765}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 256, y: 256}
+    newSize: {x: 256, y: 256}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 57.17634, y: 27.638153}
+  m_EdgeRadius: 0
 --- !u!95 &95677029766830408
 Animator:
   serializedVersion: 3
@@ -124,6 +150,7 @@ MonoBehaviour:
   dashReceptionTime: 0.2
   defaultColliderSize: 64
   defaultColliderOffsetY: -32
+  canMove: 1
   physicalAttack1: {fileID: 114623369196607380, guid: 6c564c7c1ace044c8a942085629bf148,
     type: 2}
   physicalAttack2: {fileID: 114120966682748856, guid: 60808379548dd45d9acfed1fda065425,

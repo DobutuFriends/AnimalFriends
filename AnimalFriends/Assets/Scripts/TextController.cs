@@ -35,7 +35,7 @@ public class TextController : MonoBehaviour
         mouseAnimator = GameObject.Find("stand_" + charaName + "_mouse").GetComponent<Animator>();
 
         windowText.text = "";
-        newText = "１２３４５６７８９０１２３４５６７８９０１２\n横幅全角２２文字まで入ります入りますそれ以上は自動改行で、合計３行まで入ります入ります入ります入ります";
+        newText = "";
         textIndex = 0;
         addTextInterval = 0.1f;
     }

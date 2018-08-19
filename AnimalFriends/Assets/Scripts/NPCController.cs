@@ -34,7 +34,6 @@ public class NPCController : MonoBehaviour
     private void Awake()
     {
         textController = GameObject.Find("windowTextRight").GetComponent<TextController>();
-        Debug.Log(textController);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -44,7 +43,6 @@ public class NPCController : MonoBehaviour
     void Start()
     {
         state = State.Init;
-        textController.UpdateNewText("ギュンギュンいくよー！", TextController.EyeType.Cross);
     }
 
     private void Init()
@@ -62,7 +60,6 @@ public class NPCController : MonoBehaviour
         }
         Vector2 newVelocity = Move();
         state = CalcState(newVelocity.x, newVelocity.y);
-        Debug.Log(state);
         animator.SetInteger("state", (int)state);
 
         Vector2 colliderSize = new Vector2(defaultColliderSize, defaultColliderSize);
@@ -121,12 +118,6 @@ public class NPCController : MonoBehaviour
 
         if (movementType["isSquat"])
         {
-            Debug.Log(velocityX);
-            Debug.Log("squaaaa");
-            if (squatIdlingTime < 0.1f)
-            {
-                textController.UpdateNewText("ちょうちょだ！", TextController.EyeType.Star, TextController.Priority.Low);
-            }
             squatIdlingTime += Time.deltaTime;
         }
         else
@@ -223,8 +214,21 @@ public class NPCController : MonoBehaviour
                     nextMotionTime = controller.motionTime;
                     nextMovementType = dict;
                 }
-
                 break;
+
+            case "TalkObject":
+                TalkObjectController talkController = collision.gameObject.GetComponent<TalkObjectController>();
+                if (talkController.isMaki)
+                {
+                    if (talkController.isSpeak)
+                    {
+                        AudioManager.Instance.PlaySE(talkController.voiceFileName, talkController.seVolume);
+                    }
+                    textController.UpdateNewText(talkController.text, talkController.eyeType, talkController.priority, talkController.addTextInterval);
+                    Destroy(collision.gameObject);
+                }
+                break;
+
             default:
                 break;
         }

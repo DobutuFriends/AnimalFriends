@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float dashReceptionTime;
     public float defaultColliderSize;
     public float defaultColliderOffsetY;
+    public bool canMove;
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D collider;
@@ -50,9 +51,6 @@ public class PlayerController : MonoBehaviour
     {
         state = State.Idle;
         jumpCount = 0;
-
-        AudioManager.Instance.PlaySE("start01", 0.2f);
-        textController.UpdateNewText("いきましょう！", TextController.EyeType.Wink);
     }
 
     // Update is called once per frame
@@ -62,8 +60,19 @@ public class PlayerController : MonoBehaviour
         {
             Init();
         }
-        Vector2 newVelocity = Move();
-        state = CalcState(newVelocity.x, newVelocity.y);
+
+        if (!canMove)
+        {
+            rb.velocity = new Vector2(0, 0);
+            state = State.Idle;
+        }
+        else
+        {
+
+            Vector2 newVelocity = Move();
+            state = CalcState(newVelocity.x, newVelocity.y);
+        }
+
         animator.SetInteger("state", (int)state);
 
         Vector2 colliderSize = new Vector2(defaultColliderSize, defaultColliderSize);
@@ -241,6 +250,20 @@ public class PlayerController : MonoBehaviour
             case "MapObject":
                 jumpCount = 0;
                 break;
+
+            case "TalkObject":
+                TalkObjectController talkController = collision.gameObject.GetComponent<TalkObjectController>();
+                if (talkController.isYukari)
+                {
+                    if (talkController.isSpeak)
+                    {
+                        AudioManager.Instance.PlaySE(talkController.voiceFileName, talkController.seVolume);
+                    }
+                    textController.UpdateNewText(talkController.text, talkController.eyeType, talkController.priority, talkController.addTextInterval);
+                    Destroy(collision.gameObject);
+                }
+                break;
+
             default:
                 break;
         }
