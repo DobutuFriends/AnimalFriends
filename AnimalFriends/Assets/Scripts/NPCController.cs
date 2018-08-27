@@ -196,6 +196,9 @@ public class NPCController : MonoBehaviour
         {
             case "CommandObject":
                 CommandObjectController controller = collision.gameObject.GetComponent<CommandObjectController>();
+
+                addMoveDict(controller.isForceType, controller.isJump, controller.isRight, controller.isLeft, controller.isSquat, controller.motionTime);
+                /*
                 var dict = new Dictionary<string, bool>();
                 dict.Add("isForceType", controller.isForceType);
                 dict.Add("isJump", controller.isJump);
@@ -214,6 +217,7 @@ public class NPCController : MonoBehaviour
                     nextMotionTime = controller.motionTime;
                     nextMovementType = dict;
                 }
+                */
                 break;
 
             case "TalkObject":
@@ -232,5 +236,36 @@ public class NPCController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void addMoveDict(bool isForceType, bool isJump, bool isRight, bool isLeft, bool isSquat, float motionTime)
+    {
+        var dict = new Dictionary<string, bool>();
+        dict.Add("isForceType", isForceType);
+        dict.Add("isJump", isJump);
+        dict.Add("isJumped", false);
+        dict.Add("isRight", isRight);
+        dict.Add("isLeft", isLeft);
+        dict.Add("isSquat", isSquat);
+        if (isForceType)
+        {
+            this.motionTime = motionTime;
+            this.movementType = dict;
+        }
+        else if (nextMovementType.Count == 0)
+        {
+            this.nextMotionTime = motionTime;
+            this.nextMovementType = dict;
+        }
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.localPosition = position;
+    }
+
+    public void SetScale(Vector3 scale)
+    {
+        transform.localScale = scale;
     }
 }

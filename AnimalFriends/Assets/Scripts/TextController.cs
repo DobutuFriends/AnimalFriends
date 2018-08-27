@@ -81,4 +81,9 @@ public class TextController : MonoBehaviour
         windowText.text = "";
         textIndex = 0;
     }
+
+    public bool GetIsTalking()
+    {
+        return isTalking;
+    }
 }

@@ -7,14 +7,14 @@ public class BackGroundController : MonoBehaviour
 
     public float resetPositionX;
     public float speed;
-    private GameObject player;
-    private Vector3 playerPos;
+    private GameObject marker;
+    private Vector3 markerPos;
 
     // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerPos = player.transform.localPosition;
+        marker = GameObject.FindGameObjectWithTag("CameraMarker");
+        markerPos = marker.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -24,10 +24,9 @@ public class BackGroundController : MonoBehaviour
         float YPos = this.gameObject.transform.localPosition.y;
         float ZPos = this.gameObject.transform.localPosition.z;
 
-        Vector3 newPlayerPos = player.transform.localPosition;
-
-        XPos -= (newPlayerPos.x - playerPos.x) * speed;
-        YPos -= (newPlayerPos.y - playerPos.y);
+        Vector3 newmarkerPos = marker.transform.position;
+        XPos -= (newmarkerPos.x - markerPos.x) * speed;
+        YPos -= (newmarkerPos.y - markerPos.y);
 
         if (this.gameObject.transform.localPosition.x < -resetPositionX)
         {
@@ -38,7 +37,7 @@ public class BackGroundController : MonoBehaviour
             XPos -= resetPositionX * 2;
         }
 
-        playerPos = newPlayerPos;
+        markerPos = newmarkerPos;
         this.gameObject.transform.localPosition = new Vector3(XPos, YPos, ZPos);
     }
 }

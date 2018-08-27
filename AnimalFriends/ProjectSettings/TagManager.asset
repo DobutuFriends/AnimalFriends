@@ -10,6 +10,7 @@ TagManager:
   - NPC
   - CommandObject
   - TalkObject
+  - CameraMarker
   layers:
   - Default
   - TransparentFX

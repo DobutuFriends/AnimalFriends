@@ -6,16 +6,12 @@ using UnityEngine.UI;
 
 public class TitleSceneController : MonoBehaviour
 {
-    Image fadePanelImage;
-    bool isPushed;
-    float fadeTime;
+    FadePanelController fadePanelController;
 
     // Use this for initialization
     void Start()
     {
-        isPushed = false;
-        fadeTime = 0;
-        fadePanelImage = GameObject.Find("FadePanel").GetComponent<Image>();
+        fadePanelController = GameObject.Find("FadePanel").GetComponent<FadePanelController>();
     }
 
     // Update is called once per frame
@@ -23,21 +19,7 @@ public class TitleSceneController : MonoBehaviour
     {
         if (Input.GetKeyDown("c"))
         {
-            isPushed = true;
-        }
-
-        if (isPushed)
-        {
-            float red = fadePanelImage.color.r;
-            float green = fadePanelImage.color.g;
-            float blue = fadePanelImage.color.b;
-            fadeTime += Time.deltaTime;
-            fadePanelImage.color = new Color(red, green, blue, fadeTime);
-        }
-
-        if (fadeTime > 1.0f)
-        {
-            SceneManager.LoadScene("PrologueScene");
+            fadePanelController.FadeOut("MainScene");
         }
     }
 }

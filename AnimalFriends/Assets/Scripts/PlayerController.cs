@@ -284,4 +284,19 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(new Vector3(0, 0, 24));
         }
     }
+
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.localPosition = position;
+    }
+
+    public void SetScale(Vector3 scale)
+    {
+        transform.localScale = scale;
+    }
 }
