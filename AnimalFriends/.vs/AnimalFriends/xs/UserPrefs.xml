@@ -1,25 +1,26 @@
 ﻿<Properties StartupConfiguration="{079170F7-698D-E174-709E-17580FFD837D}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CountNumberController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/StaticController.cs">
     <Files>
       <File FileName="Assets/Scripts/PhysicalAttackController.cs" Line="23" Column="2" />
       <File FileName="Assets/Scripts/DeathSwamp.cs" Line="16" Column="6" />
-      <File FileName="Assets/Scripts/AudioManager.cs" Line="18" Column="57" />
+      <File FileName="Assets/Scripts/AudioManager.cs" Line="61" Column="40" />
       <File FileName="Assets/Scripts/SingletonMonoBehaviour.cs" Line="16" Column="18" />
-      <File FileName="Assets/Scripts/CameraController.cs" Line="13" Column="64" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="301" Column="6" />
+      <File FileName="Assets/Scripts/CameraController.cs" Line="16" Column="5" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="41" Column="42" />
       <File FileName="Assets/Scripts/NPCController.cs" Line="270" Column="6" />
-      <File FileName="Assets/Scripts/TextController.cs" Line="82" Column="23" />
       <File FileName="Assets/Scripts/TalkObjectController.cs" Line="8" Column="24" />
       <File FileName="Assets/Scripts/stalacite_parent.cs" Line="20" Column="1" />
-      <File FileName="Assets/Scripts/TitleSceneController.cs" Line="22" Column="46" />
-      <File FileName="Assets/Scripts/FadePanelController.cs" Line="79" Column="1" />
+      <File FileName="Assets/Scripts/TitleSceneController.cs" Line="26" Column="1" />
+      <File FileName="Assets/Scripts/FadePanelController.cs" Line="76" Column="26" />
       <File FileName="Assets/Scripts/ColliderRenedrer.cs" Line="166" Column="1" />
       <File FileName="Assets/Scripts/BackGroundController.cs" Line="16" Column="36" />
-      <File FileName="Assets/Scripts/CameraMarkerController.cs" Line="87" Column="1" />
-      <File FileName="Assets/Scripts/PrologueController.cs" Line="148" Column="6" />
-      <File FileName="Assets/Scripts/GameController.cs" Line="25" Column="25" />
-      <File FileName="Assets/Scripts/CountNumberController.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/CameraMarkerController.cs" Line="55" Column="9" />
+      <File FileName="Assets/Scripts/PrologueController.cs" Line="140" Column="22" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="91" Column="55" />
+      <File FileName="Assets/Scripts/CountNumberController.cs" Line="30" Column="6" />
+      <File FileName="Assets/Scripts/TextController.cs" Line="11" Column="36" />
+      <File FileName="Assets/Scripts/StaticController.cs" Line="5" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

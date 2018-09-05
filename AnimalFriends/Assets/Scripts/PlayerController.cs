@@ -32,10 +32,12 @@ public class PlayerController : MonoBehaviour
     PhysicalAttackController physicalAttack1, physicalAttack2, physicalAttack3;
 
     TextController textController;
+    GameController gameController;
 
     private void Awake()
     {
         textController = GameObject.Find("windowTextLeft").GetComponent<TextController>();
+        gameController = GameObject.FindWithTag("MainCamera").GetComponent<GameController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -90,7 +92,6 @@ public class PlayerController : MonoBehaviour
 
     Vector2 Move()
     {
-        SummarSolt();
         Vector2 scale = transform.localScale;
         Vector2 newVelocity;
         float velocityX = rb.velocity.x;
@@ -264,24 +265,12 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
 
+            case "Goal":
+                gameController.PlayerGoal();
+                break;
+
             default:
                 break;
-        }
-    }
-
-    private void SummarSoltStart()
-    {
-        transform.Rotate(new Vector3(0, 0, 24));
-        float velocityX = rb.velocity.x; ;
-        float velocityY = jumpPower / 2;
-        rb.velocity = new Vector2(velocityX, velocityY);
-    }
-
-    private void SummarSolt()
-    {
-        if (transform.rotation != Quaternion.Euler(0, 0, 0))
-        {
-            transform.Rotate(new Vector3(0, 0, 24));
         }
     }
 

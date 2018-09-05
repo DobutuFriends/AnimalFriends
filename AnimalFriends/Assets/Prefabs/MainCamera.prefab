@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 124615807707243742}
   - component: {fileID: 81557824509553858}
   - component: {fileID: 114959658970505696}
+  - component: {fileID: 114827796230106548}
+  - component: {fileID: 114258568443005896}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -285,7 +287,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456574613791598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 158, z: -10}
+  m_LocalPosition: {x: -75, y: 83, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4399980370370392}
@@ -407,6 +409,17 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456574613791598}
   m_Enabled: 1
+--- !u!114 &114258568443005896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1456574613791598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6ed67862668484f9b07be4cc5db48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114266782147854474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -419,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPositionX: 2046
-  speed: 1
+  speed: 1.5
 --- !u!114 &114577591955105246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -458,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPositionX: 2046
-  speed: 1
+  speed: 1.5
 --- !u!114 &114772845870435194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -471,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPositionX: 2046
-  speed: 1
+  speed: 1.5
 --- !u!114 &114804938436535716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -484,7 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPositionX: 2046
-  speed: 1
+  speed: 1.5
 --- !u!114 &114824610398529382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,7 +510,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetPositionX: 2046
-  speed: 1
+  speed: 1.5
+--- !u!114 &114827796230106548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1456574613791598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ee22ef1ac0a4b4bbf36e2dcd5d40e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114850974077209294
 MonoBehaviour:
   m_ObjectHideFlags: 1

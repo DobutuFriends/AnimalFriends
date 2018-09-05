@@ -11,6 +11,7 @@ TagManager:
   - CommandObject
   - TalkObject
   - CameraMarker
+  - Goal
   layers:
   - Default
   - TransparentFX
