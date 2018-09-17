@@ -11,6 +11,7 @@ public class FadePanelController : MonoBehaviour
     FadeType fadeType;
     bool isFadeIn;
     bool isFadeOut;
+    bool isBlackOut;
     float fadeTime;
     string nextScene;
 
@@ -24,6 +25,7 @@ public class FadePanelController : MonoBehaviour
         fadeType = FadeType.None;
         isFadeIn = false;
         isFadeOut = false;
+        isBlackOut = false;
         fadeTime = 0;
         nextScene = "";
         red = fadePanelImage.color.r;
@@ -53,12 +55,14 @@ public class FadePanelController : MonoBehaviour
 
         if (fadeTime > 1.0f && nextScene != "")
         {
+            isBlackOut = false;
             SceneManager.LoadScene(nextScene);
         }
     }
 
     public void FadeIn()
     {
+        isBlackOut = false;
         fadeType = FadeType.FadeIn;
         fadeTime = 0;
         this.nextScene = "";
@@ -66,8 +70,19 @@ public class FadePanelController : MonoBehaviour
 
     public void FadeOut(string nextScene = "")
     {
+        if (!isBlackOut)
+        {
+            fadeType = FadeType.FadeOut;
+            fadeTime = 0;
+        }
+        this.nextScene = nextScene;
+    }
+
+    public void BlackOut(string nextScene = "")
+    {
+        isBlackOut = true;
         fadeType = FadeType.FadeOut;
-        fadeTime = 0;
+        fadeTime = 1.0f;
         this.nextScene = nextScene;
     }
 
@@ -75,4 +90,5 @@ public class FadePanelController : MonoBehaviour
     {
         return fadeTime < 1.0f;
     }
+
 }

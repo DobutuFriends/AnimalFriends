@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50643090281278558}
   - component: {fileID: 61143436490778444}
   - component: {fileID: 114701515036583412}
+  - component: {fileID: 61621206440682116}
   m_Layer: 18
   m_Name: maki
   m_TagString: NPC
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147247251407946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 200, y: 165, z: 0}
+  m_LocalPosition: {x: 776, y: 18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,6 +89,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 64, y: 64}
+  m_EdgeRadius: 0
+--- !u!61 &61621206440682116
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1147247251407946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.337678, y: -55.52477}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 256, y: 256}
+    newSize: {x: 256, y: 256}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 57.17634, y: 27.63815}
   m_EdgeRadius: 0
 --- !u!95 &95661439317148602
 Animator:

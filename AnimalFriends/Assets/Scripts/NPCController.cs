@@ -30,10 +30,12 @@ public class NPCController : MonoBehaviour
     int movementIndex = 0;
 
     TextController textController;
+    GameController gameController;
 
     private void Awake()
     {
         textController = GameObject.Find("windowTextRight").GetComponent<TextController>();
+        gameController = GameObject.FindWithTag("MainCamera").GetComponent<GameController>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
@@ -183,7 +185,7 @@ public class NPCController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "MapObject":
-                jumpCount = 0;
+                //jumpCount = 0;
                 break;
             default:
                 break;
@@ -194,30 +196,14 @@ public class NPCController : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
+            case "MapObject":
+                jumpCount = 0;
+                break;
+
             case "CommandObject":
                 CommandObjectController controller = collision.gameObject.GetComponent<CommandObjectController>();
 
                 addMoveDict(controller.isForceType, controller.isJump, controller.isRight, controller.isLeft, controller.isSquat, controller.motionTime);
-                /*
-                var dict = new Dictionary<string, bool>();
-                dict.Add("isForceType", controller.isForceType);
-                dict.Add("isJump", controller.isJump);
-                dict.Add("isJumped", false);
-                dict.Add("isRight", controller.isRight);
-                dict.Add("isLeft", controller.isLeft);
-                dict.Add("isSquat", controller.isSquat);
-
-                if (controller.isForceType)
-                {
-                    motionTime = controller.motionTime;
-                    movementType = dict;
-                }
-                else if (nextMovementType.Count == 0)
-                {
-                    nextMotionTime = controller.motionTime;
-                    nextMovementType = dict;
-                }
-                */
                 break;
 
             case "TalkObject":
@@ -231,6 +217,10 @@ public class NPCController : MonoBehaviour
                     textController.UpdateNewText(talkController.text, talkController.eyeType, talkController.priority, talkController.addTextInterval);
                     Destroy(collision.gameObject);
                 }
+                break;
+
+            case "Goal":
+                gameController.NpcGoal();
                 break;
 
             default:

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public enum State { Idle = 1, Init = 2, CountDown = 3, Start = 4, Playing = 5, PlayerGoal = 6, ClearWait = 7, FadeOut = 8 };
+    public enum State { Idle = 1, Init = 2, CountDown = 3, Start = 4, Playing = 5, PlayerGoal = 6, ClearWait = 7, FadeOut = 8, NpcGoal = 9 };
     State state;
 
     FadePanelController fadePanelController;
@@ -14,13 +14,18 @@ public class GameController : MonoBehaviour
     PlayerController playerController;
     TextController textControllerLeft, textControllerRight;
     private Text timeText;
+    private Text stageTimeText1;
+    private Text stageTimeText2;
+    private Text stageTimeText3;
     bool isPlayingGame = false;
     float idleTime = 0;
     float playTime = 0;
+    public int stageNumber;
 
     // Use this for initialization
     void Start()
     {
+        StaticController.SetStageNumber(stageNumber);
         fadePanelController = GameObject.Find("FadePanel").GetComponent<FadePanelController>();
         countNumberController = GameObject.Find("CountNumber").GetComponent<CountNumberController>();
         npcController = GameObject.Find("maki").GetComponent<NPCController>();
@@ -28,18 +33,28 @@ public class GameController : MonoBehaviour
         textControllerLeft = GameObject.Find("windowTextLeft").GetComponent<TextController>();
         textControllerRight = GameObject.Find("windowTextRight").GetComponent<TextController>();
         timeText = GameObject.Find("Time").GetComponent<Text>();
+        stageTimeText1 = GameObject.Find("StageTime1").GetComponent<Text>();
+        stageTimeText2 = GameObject.Find("StageTime2").GetComponent<Text>();
+        stageTimeText3 = GameObject.Find("StageTime3").GetComponent<Text>();
+        stageTimeText1.text = StaticController.stage1TimeText;
+        stageTimeText2.text = StaticController.stage2TimeText;
+        stageTimeText3.text = StaticController.stage3TimeText;
         state = State.Idle;
     }
 
     public void Init()
     {
-        StaticController.stageNumber = 1;
         fadePanelController.FadeIn();
         playerController.SetPosition(new Vector3(-75, 18, 0));
         playerController.SetScale(new Vector3(1, 1, 1));
         npcController.SetPosition(new Vector3(250, 18, 0));
+        if (stageNumber == 2)
+        {
+            npcController.SetPosition(new Vector3(0, 18, 0));
+        }
         npcController.SetScale(new Vector3(1, 1, 1));
         state = State.Init;
+
     }
 
     // Update is called once per frame
@@ -51,6 +66,11 @@ public class GameController : MonoBehaviour
             case State.Idle:
                 break;
             case State.Init:
+                if (StaticController.skipForDebug)
+                {
+                    state = State.Start;
+                    break;
+                }
                 if (!fadePanelController.IsFading())
                 {
                     state = State.CountDown;
@@ -89,16 +109,25 @@ public class GameController : MonoBehaviour
                 idleTime = 0;
                 playerController.SetCanMove(false);
                 state = State.ClearWait;
-                StaticController.setClearTime(playTime);
+                StaticController.SetClearTime(playTime);
+                StaticController.SetClearTimeText(timeText.text);
                 break;
             case State.ClearWait:
                 if (idleTime > 2.0f)
                 {
-                    fadePanelController.FadeOut("MainScene");
+                    StaticController.SetStageNumber(StaticController.stageNumber + 1);
+                    fadePanelController.FadeOut("Stage" + StaticController.stageNumber);
                     state = State.FadeOut;
                 }
                 break;
             case State.FadeOut:
+                break;
+            case State.NpcGoal:
+                if (idleTime > 2.0f)
+                {
+                    fadePanelController.FadeOut("GameOverScene");
+                    state = State.FadeOut;
+                }
                 break;
         }
     }
@@ -106,5 +135,13 @@ public class GameController : MonoBehaviour
     public void PlayerGoal()
     {
         state = State.PlayerGoal;
+    }
+
+    public void NpcGoal()
+    {
+        if (state == State.Playing)
+        {
+            state = State.NpcGoal;
+        }
     }
 }

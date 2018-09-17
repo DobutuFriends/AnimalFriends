@@ -19,7 +19,7 @@ public class TitleSceneController : MonoBehaviour
     {
         if (Input.GetKeyDown("c"))
         {
-            fadePanelController.FadeOut("MainScene");
+            fadePanelController.FadeOut("Stage1");
         }
     }
 }
