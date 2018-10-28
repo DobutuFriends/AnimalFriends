@@ -10,8 +10,10 @@ public class PrologueController : MonoBehaviour
     FadePanelController fadePanelController;
     enum PrologueState { Start, Talk1, Talk2, Talk3, MoveOnCamera, Talk4, ReturnCamera, Talk5, Talk6, Talk7, Talk8, Talk9, Talk10, Talk11 };
     enum PrologueState2 { Start, Talk1, Talk2, Talk3, MoveOnCamera, Talk4, ReturnCamera, Talk5, Talk6, Talk7, Talk8, Talk9, Talk10, Talk11 };
+    enum PrologueState3 { Start, Talk1, Talk2, Talk3, Talk3_2, MoveOnCamera, Talk4, ReturnCamera, Talk5, Talk6, Talk7, Talk8, Talk9, Talk10, Talk11 };
     PrologueState state;
     PrologueState2 state2;
+    PrologueState3 state3;
     NPCController npcController;
     CameraMarkerController cameraMarkerController;
     GameController gameController;
@@ -24,6 +26,7 @@ public class PrologueController : MonoBehaviour
     {
         state = PrologueState.Start;
         state2 = PrologueState2.Start;
+        state3 = PrologueState3.Start;
         time = 0;
         pressTime = 0;
         isEndTalking = false;
@@ -66,7 +69,7 @@ public class PrologueController : MonoBehaviour
                     state2 = PrologueState2.Talk9;
                     break;
                 case 3:
-                    StageThreeUpdate();
+                    state3 = PrologueState3.Talk9;
                     break;
             }
             isEndTalking = true;
@@ -317,5 +320,107 @@ public class PrologueController : MonoBehaviour
     }
     private void StageThreeUpdate()
     {
+        switch (state3)
+        {
+            case PrologueState3.Start:
+                if (!fadePanelController.IsFading())
+                {
+                    npcController.addMoveDict(true, false, false, false, true, 1.1f);
+                    textControllerRight.UpdateNewText("いたた、さっきのところで足をくじいちゃった   ", TextController.EyeType.Cross, TextController.Priority.Low);
+                    state3 = PrologueState3.Talk1;
+                }
+                break;
+            case PrologueState3.Talk1:
+                if (!textControllerRight.GetIsTalking())
+                {
+                    textControllerLeft.UpdateNewText("！ 大丈夫ですか、歩けますか？   ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    state3 = PrologueState3.Talk2;
+                }
+                break;
+            case PrologueState3.Talk2:
+                if (!textControllerLeft.GetIsTalking())
+                {
+                    textControllerRight.UpdateNewText("ちょっと厳しいかも...   ", TextController.EyeType.Normal, TextController.Priority.High);
+                    state3 = PrologueState3.Talk3;
+                }
+                break;
+            case PrologueState3.Talk3:
+                if (!textControllerRight.GetIsTalking())
+                {
+                    textControllerLeft.UpdateNewText("ここからだと、マキさんのおうちはどっちでしたっけ？   ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    state3 = PrologueState3.Talk3_2;
+                }
+                break;
+            case PrologueState3.Talk3_2:
+                if (!textControllerLeft.GetIsTalking())
+                {
+                    textControllerRight.UpdateNewText("向こうに見える木のそばだよ   ", TextController.EyeType.Normal, TextController.Priority.High);
+                    state3 = PrologueState3.MoveOnCamera;
+                }
+                break;
+            case PrologueState3.MoveOnCamera:
+                cameraMarkerController.MoveOn();
+                state3 = PrologueState3.Talk4;
+                break;
+            case PrologueState3.Talk4:
+                if (!cameraMarkerController.GetIsMoving())
+                {
+                    textControllerLeft.UpdateNewText("あれですね、わかりました      ", TextController.EyeType.Wink, TextController.Priority.Low);
+                    state3 = PrologueState3.ReturnCamera;
+                }
+                break;
+            case PrologueState3.ReturnCamera:
+                if (!textControllerLeft.GetIsTalking())
+                {
+                    cameraMarkerController.Return();
+                    state3 = PrologueState3.Talk5;
+                }
+                break;
+            case PrologueState3.Talk5:
+                textControllerLeft.UpdateNewText("おぶっていくので、しっかりつかまっていてください       ", TextController.EyeType.Normal, TextController.Priority.Low);
+                state3 = PrologueState3.Talk6;
+                break;
+            case PrologueState3.Talk6:
+                if (!textControllerLeft.GetIsTalking())
+                {
+                    textControllerLeft.UpdateNewText("競争の続きはまた今度にしましょう      ", TextController.EyeType.Smile, TextController.Priority.Low);
+                    state3 = PrologueState3.Talk7;
+                }
+                break;
+            case PrologueState3.Talk7:
+                if (!textControllerLeft.GetIsTalking())
+                {
+                    textControllerRight.UpdateNewText("ごめんねゆかりん、ありがとう      ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    state3 = PrologueState3.Talk8;
+                }
+                break;
+            case PrologueState3.Talk8:
+                if (!cameraMarkerController.GetIsMoving() && !textControllerRight.GetIsTalking())
+                {
+                    textControllerLeft.UpdateNewText("任せてください   ", TextController.EyeType.Wink, TextController.Priority.Low);
+                    state3 = PrologueState3.Talk9;
+                }
+                break;
+            case PrologueState3.Talk9:
+                if (!textControllerLeft.GetIsTalking())
+                {
+                    cameraMarkerController.Return();
+                    fadePanelController.FadeOut();
+                    state3 = PrologueState3.Talk10;
+                    isEndTalking = true;
+                }
+                break;
+            case PrologueState3.Talk10:
+                if (!fadePanelController.IsFading())
+                {
+                    npcController.SetIsPiggyback(true);
+                    npcController.addMoveDict(true, false, false, false, false, 1.1f);
+                    gameController.Init();
+                    state3 = PrologueState3.Talk11;
+                }
+                break;
+            case PrologueState3.Talk11:
+                break;
+        }
     }
 }

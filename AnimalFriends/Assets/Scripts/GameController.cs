@@ -52,6 +52,10 @@ public class GameController : MonoBehaviour
         {
             npcController.SetPosition(new Vector3(0, 18, 0));
         }
+        if (stageNumber == 3)
+        {
+            npcController.SetPosition(new Vector3(-78, 64, 0));
+        }
         npcController.SetScale(new Vector3(1, 1, 1));
         state = State.Init;
 
@@ -86,8 +90,12 @@ public class GameController : MonoBehaviour
                 break;
             case State.Start:
                 playerController.SetCanMove(true);
-                npcController.addMoveDict(false, false, true, false, false, 2.0f);
-                textControllerRight.UpdateNewText("ギュンギュンいくよー！", TextController.EyeType.Cross, TextController.Priority.Normal);
+                npcController.SetCanMove(true);
+                if (stageNumber != 3)
+                {
+                    npcController.addMoveDict(false, false, true, false, false, 2.0f);
+                    textControllerRight.UpdateNewText("ギュンギュンいくよー！", TextController.EyeType.Cross, TextController.Priority.Normal);
+                }
                 state = State.Playing;
                 break;
             case State.Playing:
@@ -108,6 +116,7 @@ public class GameController : MonoBehaviour
             case State.PlayerGoal:
                 idleTime = 0;
                 playerController.SetCanMove(false);
+                npcController.SetCanMove(false);
                 state = State.ClearWait;
                 StaticController.SetClearTime(playTime);
                 StaticController.SetClearTimeText(timeText.text);
@@ -115,8 +124,15 @@ public class GameController : MonoBehaviour
             case State.ClearWait:
                 if (idleTime > 2.0f)
                 {
-                    StaticController.SetStageNumber(StaticController.stageNumber + 1);
-                    fadePanelController.FadeOut("Stage" + StaticController.stageNumber);
+                    if (StaticController.stageNumber >= 3)
+                    {
+                        fadePanelController.FadeOut("GameClearScene");
+                    }
+                    else
+                    {
+                        StaticController.SetStageNumber(StaticController.stageNumber + 1);
+                        fadePanelController.FadeOut("Stage" + StaticController.stageNumber);
+                    }
                     state = State.FadeOut;
                 }
                 break;

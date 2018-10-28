@@ -10,6 +10,8 @@ public class NPCController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D collider;
+    public bool canMove;
+    bool isPiggyback = false;
 
     enum State { Init = -1, Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, Squat = 5, };
     enum Direction { Right = 0, Left = 1, };
@@ -60,16 +62,35 @@ public class NPCController : MonoBehaviour
         {
             Init();
         }
+
+
         Vector2 newVelocity = Move();
         state = CalcState(newVelocity.x, newVelocity.y);
         animator.SetInteger("state", (int)state);
 
         Vector2 colliderSize = new Vector2(defaultColliderSize, defaultColliderSize);
-        Vector2 colliderOffset = new Vector2(0, defaultColliderOffsetY);
+        Vector2 colliderOffset;
+        if (isPiggyback)
+        {
+            colliderOffset = new Vector2(0, -77);
+        }
+        else
+        {
+            colliderOffset = new Vector2(0, defaultColliderOffsetY);
+        }
+
+
         if (state == State.Squat)
         {
             colliderSize.y = defaultColliderSize / 2;
-            colliderOffset.y = defaultColliderOffsetY * 1.5f;
+            if (isPiggyback)
+            {
+                colliderOffset.y = -77 - (defaultColliderSize / 4);
+            }
+            else
+            {
+                colliderOffset.y = defaultColliderOffsetY - (defaultColliderSize / 4);
+            }
         }
         collider.size = colliderSize;
         collider.offset = colliderOffset;
@@ -85,67 +106,116 @@ public class NPCController : MonoBehaviour
         float velocityX = 0;
         float velocityY = rb.velocity.y;
 
-        if (movementType.Count == 0 || motionTime < 0.1f)
+        if (StaticController.stageNumber == 3 && canMove)
         {
-            // 何も入力が無い場合
-            if (nextMovementType.Count == 0)
+
+            if (Input.GetKey("left"))
             {
-                newVelocity = new Vector2(velocityX, velocityY);
-                rb.velocity = newVelocity;
-                return newVelocity;
+                idlingTime = 0;
+                direction = Direction.Left;
+                velocityX = -speed;
+                scale.x = Math.Abs(scale.x) * -1;
             }
-            textController.UpdateNewText("ゴー！", TextController.EyeType.Cross, TextController.Priority.Low);
-            movementType = new Dictionary<string, bool>(nextMovementType);
-            nextMovementType.Clear();
-            motionTime = nextMotionTime;
-        }
-        else
-        {
-            motionTime -= Time.deltaTime;
-        }
-
-        if (movementType["isRight"])
-        {
-            direction = Direction.Right;
-            velocityX = speed;
-            scale.x = Math.Abs(scale.x);
-        }
-        else if (movementType["isLeft"])
-        {
-            direction = Direction.Left;
-            velocityX = -speed;
-            scale.x = Math.Abs(scale.x) * -1;
-        }
-
-
-        if (movementType["isSquat"])
-        {
-            squatIdlingTime += Time.deltaTime;
-        }
-        else
-        {
-            squatIdlingTime = 0;
-        }
-
-
-        if (movementType["isJump"] && !movementType["isJumped"] && jumpCount < 2)
-        {
-            if (jumpCount == 0)
+            else if (Input.GetKey("right"))
             {
-                textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                idlingTime = 0;
+                direction = Direction.Right;
+                velocityX = speed;
+                scale.x = Math.Abs(scale.x);
             }
             else
             {
-                textController.UpdateNewText("やあ！", TextController.EyeType.Anger, TextController.Priority.Low);
+                idlingTime += Time.deltaTime;
+
+                if (Input.GetKey("down"))
+                {
+                    squatIdlingTime += Time.deltaTime;
+                }
+                else
+                {
+                    squatIdlingTime = 0;
+                }
+                velocityX = 0;
             }
 
-            movementType["isJumped"] = true;
-            velocityY = jumpPower;
-            jumpCount++;
+            transform.localScale = scale;
+
+            if (Input.GetKeyDown("c") && jumpCount < 2)
+            {
+                velocityY = jumpPower;
+                jumpCount++;
+            }
+        }
+        else
+        {
+
+            if (movementType.Count == 0 || motionTime < 0.1f)
+            {
+                // 何も入力が無い場合
+                if (nextMovementType.Count == 0)
+                {
+                    newVelocity = new Vector2(velocityX, velocityY);
+                    rb.velocity = newVelocity;
+                    return newVelocity;
+                }
+                textController.UpdateNewText("ゴー！", TextController.EyeType.Cross, TextController.Priority.Low);
+                movementType = new Dictionary<string, bool>(nextMovementType);
+                nextMovementType.Clear();
+                motionTime = nextMotionTime;
+            }
+            else
+            {
+                motionTime -= Time.deltaTime;
+            }
+
+            if (movementType["isRight"])
+            {
+                direction = Direction.Right;
+                velocityX = speed;
+                scale.x = Math.Abs(scale.x);
+            }
+            else if (movementType["isLeft"])
+            {
+                direction = Direction.Left;
+                velocityX = -speed;
+                scale.x = Math.Abs(scale.x) * -1;
+            }
+
+
+            if (movementType["isSquat"])
+            {
+                squatIdlingTime += Time.deltaTime;
+            }
+            else
+            {
+                squatIdlingTime = 0;
+            }
+
+
+            if (movementType["isJump"] && !movementType["isJumped"] && jumpCount < 2)
+            {
+                if (jumpCount == 0)
+                {
+                    textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                }
+                else
+                {
+                    textController.UpdateNewText("やあ！", TextController.EyeType.Anger, TextController.Priority.Low);
+                }
+
+                movementType["isJumped"] = true;
+                velocityY = jumpPower;
+                jumpCount++;
+            }
+
+
+            transform.localScale = scale;
         }
 
 
-        transform.localScale = scale;
+
+
+
 
         newVelocity = new Vector2(velocityX, velocityY);
         rb.velocity = newVelocity;
@@ -257,5 +327,15 @@ public class NPCController : MonoBehaviour
     public void SetScale(Vector3 scale)
     {
         transform.localScale = scale;
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        this.canMove = canMove;
+    }
+
+    public void SetIsPiggyback(bool isPiggyback)
+    {
+        this.isPiggyback = isPiggyback;
     }
 }
