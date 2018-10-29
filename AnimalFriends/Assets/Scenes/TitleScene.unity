@@ -446,6 +446,32 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114279891730670048, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b13b6b0db9c434e2ba7f48fccce32ec4,
+        type: 3}
+    - target: {fileID: 224551923590807024, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 224551923590807024, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -57
+      objectReference: {fileID: 0}
+    - target: {fileID: 224551923590807024, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114279891730670048, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_Text
+      value: PRESS 'C' KEY
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f, type: 2}
   m_IsPrefabAsset: 0

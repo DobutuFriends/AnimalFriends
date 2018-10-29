@@ -104,4 +104,19 @@ public class StaticController : MonoBehaviour
                 return false;
         }
     }
+
+    public static string GetTotalTimeText()
+    {
+        float playTime = stage1Time + stage2Time + stage3Time;
+        float playTimeSec = Mathf.Floor(playTime);
+        float min = ((int)playTimeSec) / 60;
+        float sec = ((int)playTimeSec) % 60;
+        float fewSec = Mathf.Floor((playTime - playTimeSec) * 100);
+
+        string minStr = (min < 10.0f ? "0" + min.ToString() : min.ToString());
+        string secStr = (sec < 10.0f ? "0" + sec.ToString() : sec.ToString());
+        string fewSecStr = (fewSec < 10.0f ? "0" + fewSec.ToString() : fewSec.ToString());
+
+        return minStr + ":" + secStr + ":" + fewSecStr;
+    }
 }

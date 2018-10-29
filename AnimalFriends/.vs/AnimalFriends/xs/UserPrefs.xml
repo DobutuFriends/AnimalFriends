@@ -1,14 +1,15 @@
 ﻿<Properties StartupConfiguration="{079170F7-698D-E174-709E-17580FFD837D}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameOverController.cs">
     <Files>
       <File FileName="Assets/Scripts/PhysicalAttackController.cs" Line="23" Column="2" />
       <File FileName="Assets/Scripts/DeathSwamp.cs" Line="16" Column="6" />
       <File FileName="Assets/Scripts/AudioManager.cs" Line="61" Column="40" />
       <File FileName="Assets/Scripts/SingletonMonoBehaviour.cs" Line="16" Column="18" />
       <File FileName="Assets/Scripts/CameraController.cs" Line="16" Column="1" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="35" Column="35" />
-      <File FileName="Assets/Scripts/NPCController.cs" Line="223" Column="39" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="66" Column="21" />
+      <File FileName="Assets/Scripts/NPCController.cs" Line="337" Column="31" />
+      <File FileName="Assets/Scripts/PrologueController.cs" Line="416" Column="56" />
       <File FileName="Assets/Scripts/TalkObjectController.cs" Line="8" Column="24" />
       <File FileName="Assets/Scripts/stalacite_parent.cs" Line="20" Column="1" />
       <File FileName="Assets/Scripts/TitleSceneController.cs" Line="26" Column="1" />
@@ -18,10 +19,10 @@
       <File FileName="Assets/Scripts/CameraMarkerController.cs" Line="55" Column="1" />
       <File FileName="Assets/Scripts/CountNumberController.cs" Line="34" Column="6" />
       <File FileName="Assets/Scripts/TextController.cs" Line="61" Column="22" />
-      <File FileName="Assets/Scripts/PrologueController.cs" Line="232" Column="18" />
       <File FileName="Assets/Scripts/StaticController.cs" Line="25" Column="31" />
-      <File FileName="Assets/Scripts/GameController.cs" Line="46" Column="6" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="116" Column="35" />
       <File FileName="Assets/Scripts/GameOverController.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/GameClearController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

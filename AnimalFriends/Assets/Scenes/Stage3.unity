@@ -434,7 +434,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4646787984313076, guid: 86edda2ba02bc4cbaae85278cc32052d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4646787984313076, guid: 86edda2ba02bc4cbaae85278cc32052d, type: 2}
       propertyPath: m_LocalScale.x
@@ -474,6 +474,16 @@ Prefab:
         type: 2}
       propertyPath: defaultColliderOffsetY
       value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 212400364473538682, guid: 86edda2ba02bc4cbaae85278cc32052d,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212400364473538682, guid: 86edda2ba02bc4cbaae85278cc32052d,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86edda2ba02bc4cbaae85278cc32052d, type: 2}
@@ -796,6 +806,91 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114562400885479240, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562400885479240, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: goal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114001698160604560, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114001698160604560, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: stage_3_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892741118343126, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: text
+      value: "\u306F\u3044\uFF01          "
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235148755553360, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: stage_3_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235148755553360, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114469653460368866, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114469653460368866, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: stage_3_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930101551532652, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114930101551532652, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: stage_3_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193805381004414, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193805381004414, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: stage_3_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114459235174288942, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114459235174288942, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: stage_3_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892741118343126, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: stage_3_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892741118343126, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 396043285abf2465498feb38127f16b1, type: 2}
   m_IsPrefabAsset: 0
@@ -929,7 +1024,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4425162713663072, guid: bcd0348e67a904829800542d42d67c37, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4840543445331704, guid: bcd0348e67a904829800542d42d67c37, type: 2}
       propertyPath: m_RootOrder
@@ -1545,11 +1640,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224409109549374634, guid: 575c250f977814088ab9143baa163c68,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224409109549374634, guid: 575c250f977814088ab9143baa163c68,
         type: 2}
       propertyPath: m_LocalPosition.x

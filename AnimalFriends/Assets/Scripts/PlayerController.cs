@@ -105,7 +105,9 @@ public class PlayerController : MonoBehaviour
         if (idlingTime < dashReceptionTime &&
             ((Input.GetKeyDown("left") && direction == Direction.Left) || (Input.GetKeyDown("right") && direction == Direction.Right)))
         {
-            isDash = true;
+            // ダッシュは無しにする
+            //isDash = true;
+            isDash = false;
         }
 
         if (Input.GetKey("left"))

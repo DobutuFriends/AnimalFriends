@@ -36,4 +36,21 @@ public class CountNumberController : MonoBehaviour
         int nowHash = anim.nameHash;
         return (nowHash == stateCountNumberHash);
     }
+
+    public void PlayThreeSound()
+    {
+        AudioManager.Instance.PlaySE("three", 0.3f);
+    }
+    public void PlayTwoSound()
+    {
+        AudioManager.Instance.PlaySE("two", 0.3f);
+    }
+    public void PlayOneSound()
+    {
+        AudioManager.Instance.PlaySE("one", 0.3f);
+    }
+    public void PlayGoSound()
+    {
+        AudioManager.Instance.PlaySE("go", 0.3f);
+    }
 }
