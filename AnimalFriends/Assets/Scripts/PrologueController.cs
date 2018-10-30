@@ -33,7 +33,7 @@ public class PrologueController : MonoBehaviour
         fadePanelController = GameObject.Find("FadePanel").GetComponent<FadePanelController>();
 
 
-        if (StaticController.skipForDebug || StaticController.IsSkipPrologue())
+        if (StaticController.IsSkipPrologue())
         {
             fadePanelController.BlackOut();
         }
@@ -97,7 +97,7 @@ public class PrologueController : MonoBehaviour
         {
             return false;
         }
-        if (StaticController.skipForDebug || StaticController.IsSkipPrologue())
+        if (StaticController.IsSkipPrologue())
         {
             return true;
         }

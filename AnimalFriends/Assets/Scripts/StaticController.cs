@@ -11,7 +11,7 @@ public class StaticController : MonoBehaviour
     public static string stage1TimeText = "--:--:--";
     public static string stage2TimeText = "--:--:--";
     public static string stage3TimeText = "--:--:--";
-    public static bool skipForDebug = false;
+    public static bool isSkipAllPrologue = false;
     public static bool isSkipStage1Prologue = false;
     public static bool isSkipStage2Prologue = false;
     public static bool isSkipStage3Prologue = false;
@@ -25,10 +25,6 @@ public class StaticController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("d"))
-        {
-            skipForDebug = true;
-        }
     }
 
     public static void SetClearTime(float time)
@@ -92,6 +88,10 @@ public class StaticController : MonoBehaviour
 
     public static bool IsSkipPrologue()
     {
+        if (isSkipAllPrologue)
+        {
+            return true;
+        }
         switch (stageNumber)
         {
             case 1:
@@ -103,6 +103,11 @@ public class StaticController : MonoBehaviour
             default:
                 return false;
         }
+    }
+
+    public static void SetSkipAllPrologue(bool isSkip)
+    {
+        isSkipAllPrologue = isSkip;
     }
 
     public static string GetTotalTimeText()
@@ -118,5 +123,20 @@ public class StaticController : MonoBehaviour
         string fewSecStr = (fewSec < 10.0f ? "0" + fewSec.ToString() : fewSec.ToString());
 
         return minStr + ":" + secStr + ":" + fewSecStr;
+    }
+
+    public static void Reset()
+    {
+        stageNumber = 0;
+        stage1Time = 0;
+        stage2Time = 0;
+        stage3Time = 0;
+        stage1TimeText = "--:--:--";
+        stage2TimeText = "--:--:--";
+        stage3TimeText = "--:--:--";
+        isSkipAllPrologue = false;
+        isSkipStage1Prologue = false;
+        isSkipStage2Prologue = false;
+        isSkipStage3Prologue = false;
     }
 }

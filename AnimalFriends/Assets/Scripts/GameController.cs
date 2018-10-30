@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         }
         if (stageNumber == 3)
         {
-            npcController.SetPosition(new Vector3(-78, 64, 0));
+            npcController.SetPosition(new Vector3(-75, 64, 0));
         }
         npcController.SetScale(new Vector3(1, 1, 1));
         state = State.Init;
@@ -70,11 +70,6 @@ public class GameController : MonoBehaviour
             case State.Idle:
                 break;
             case State.Init:
-                if (StaticController.skipForDebug)
-                {
-                    state = State.Start;
-                    break;
-                }
                 if (!fadePanelController.IsFading())
                 {
                     state = State.CountDown;
@@ -139,7 +134,11 @@ public class GameController : MonoBehaviour
             case State.FadeOut:
                 break;
             case State.NpcGoal:
-                if (idleTime > 2.0f)
+                if (StaticController.stageNumber >= 3)
+                {
+                    state = State.PlayerGoal;
+                }
+                else if (idleTime > 2.0f)
                 {
                     fadePanelController.FadeOut("GameOverScene");
                     state = State.FadeOut;
