@@ -891,6 +891,66 @@ Prefab:
       propertyPath: isSpeak
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114930101551532652, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114284385248535104, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114001698160604560, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114469653460368866, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892741118343126, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696523153275756, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114459235174288942, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114193805381004414, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114562400885479240, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235148755553360, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114533365969176576, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135600102628220, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 396043285abf2465498feb38127f16b1, type: 2}
   m_IsPrefabAsset: 0

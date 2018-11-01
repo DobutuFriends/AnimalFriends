@@ -1942,6 +1942,21 @@ Prefab:
       propertyPath: isSpeak
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114870525842674438, guid: 740b09303033e4e24a43c1a00ba7e142,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114410820245365824, guid: 740b09303033e4e24a43c1a00ba7e142,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114070494152167128, guid: 740b09303033e4e24a43c1a00ba7e142,
+        type: 2}
+      propertyPath: seVolume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 740b09303033e4e24a43c1a00ba7e142, type: 2}
   m_IsPrefabAsset: 0

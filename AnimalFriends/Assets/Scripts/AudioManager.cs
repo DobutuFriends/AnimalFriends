@@ -17,6 +17,8 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
     private Dictionary<string, AudioClip> bgmDict = null;
     private Dictionary<string, AudioClip> seDict = null;
 
+    private bool isFadeOut = false;
+
     public void Start()
     {
         // Audio Listener がなければ作る
@@ -42,6 +44,18 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         };
         this.BGMList.ForEach(bgm => addClipDict(this.bgmDict, bgm));
         this.SEList.ForEach(se => addClipDict(this.seDict, se));
+    }
+
+    public void Update()
+    {
+        if (isFadeOut)
+        {
+            this.bgmSource.volume = this.bgmSource.volume * 0.98f;
+            if (this.bgmSource.volume < 0.01f)
+            {
+                this.StopBGM();
+            }
+        }
     }
 
     public void PlaySE(string seName, float volume = 1.0f, bool loop = false)
@@ -85,6 +99,11 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         }
     }
 
+    public void PlaySE(string seName)
+    {
+        PlaySE(seName, 0.3f, false);
+    }
+
     public void PlayBGM(string bgmName, float volume = 1.0f, bool loop = true)
     {
         if (!this.bgmDict.ContainsKey(bgmName))
@@ -97,12 +116,19 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
         this.bgmSource.volume = volume;
         this.bgmSource.pitch = 1;
         this.bgmSource.Play();
+        isFadeOut = false;
     }
 
     public void StopBGM()
     {
         this.bgmSource.Stop();
         this.bgmSource.clip = null;
+        isFadeOut = false;
+    }
+
+    public void FadeOutBGM()
+    {
+        isFadeOut = true;
     }
 
     public void SetBGMPitch(float pitch)

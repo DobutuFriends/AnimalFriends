@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class TitleSceneController : MonoBehaviour
 {
-    public enum State { Init = 1, Idle = 2, FadeOut = 3 };
+    public enum State { Init = 1, Opening = 2, Idle = 3, FadeOut = 4 };
     State state;
     Toggle rtaModeToggle;
 
@@ -24,16 +24,24 @@ public class TitleSceneController : MonoBehaviour
     public void Init()
     {
         fadePanelController.FadeIn();
-        state = State.Idle;
+        state = State.Opening;
         StaticController.Reset();
+        AudioManager.Instance.PlayBGM("game_maoudamashii_7_event37", 0.2f, true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (state == State.Opening && !fadePanelController.IsFading())
+        {
+            AudioManager.Instance.PlaySE("title", 1.0f);
+            state = State.Idle;
+        }
         if (state == State.Idle && Input.GetKeyDown("c"))
         {
+            AudioManager.Instance.FadeOutBGM();
             fadePanelController.FadeOut("Stage1");
+            AudioManager.Instance.PlaySE("decision27", 0.3f);
         }
     }
 

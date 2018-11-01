@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour
         }
         npcController.SetScale(new Vector3(1, 1, 1));
         state = State.Init;
+        AudioManager.Instance.PlayBGM("bgm_maoudamashii_8bit24", 0.15f, true);
 
     }
 
@@ -115,9 +116,10 @@ public class GameController : MonoBehaviour
                 state = State.ClearWait;
                 StaticController.SetClearTime(playTime);
                 StaticController.SetClearTimeText(timeText.text);
+                AudioManager.Instance.FadeOutBGM();
                 break;
             case State.ClearWait:
-                if (idleTime > 2.0f)
+                if (idleTime > 1.0f)
                 {
                     if (StaticController.stageNumber >= 3)
                     {
@@ -142,6 +144,7 @@ public class GameController : MonoBehaviour
                 {
                     fadePanelController.FadeOut("GameOverScene");
                     state = State.FadeOut;
+                    AudioManager.Instance.FadeOutBGM();
                 }
                 break;
         }

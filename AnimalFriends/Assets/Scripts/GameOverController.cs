@@ -19,6 +19,7 @@ public class GameOverController : MonoBehaviour
 
     public void Init()
     {
+        AudioManager.Instance.PlayBGM("bgm_maoudamashii_8bit20", 0.15f, true);
         fadePanelController.FadeIn();
         state = State.Idle;
     }
@@ -31,6 +32,8 @@ public class GameOverController : MonoBehaviour
             fadePanelController.FadeOut("Stage" + (StaticController.stageNumber == 0 ? 1 : StaticController.stageNumber));
             StaticController.SetSkipPrologue();
             state = State.FadeOut;
+            AudioManager.Instance.FadeOutBGM();
+            AudioManager.Instance.PlaySE("decision27", 0.3f);
         }
     }
 }

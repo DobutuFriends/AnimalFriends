@@ -155,38 +155,16 @@ public class PlayerController : MonoBehaviour
             if (jumpCount == 0)
             {
                 textController.UpdateNewText("えい！", TextController.EyeType.Cross, TextController.Priority.Low);
-                AudioManager.Instance.PlaySE("jump01", 0.2f);
+                AudioManager.Instance.PlaySE("jump01", 1.0f);
             }
             else
             {
                 textController.UpdateNewText("とお！", TextController.EyeType.Anger, TextController.Priority.Low);
-                AudioManager.Instance.PlaySE("jump02", 0.2f);
+                AudioManager.Instance.PlaySE("jump02", 1.0f);
             }
 
             velocityY = jumpPower;
             jumpCount++;
-        }
-
-        // Debug
-        if (Input.GetKeyDown("1"))
-        {
-            textController.UpdateNewText("結月ゆかりです。", TextController.EyeType.Normal, TextController.Priority.Low);
-        }
-        else if (Input.GetKeyDown("2"))
-        {
-            textController.UpdateNewText("うふふ", TextController.EyeType.Smile, TextController.Priority.Low);
-        }
-        else if (Input.GetKeyDown("3"))
-        {
-            textController.UpdateNewText("闇の炎に抱かれて消えろっ！", TextController.EyeType.Anger, TextController.Priority.Low);
-        }
-        else if (Input.GetKeyDown("4"))
-        {
-            textController.UpdateNewText("結月ゆかりです♪", TextController.EyeType.Wink, TextController.Priority.Low);
-        }
-        else if (Input.GetKeyDown("5"))
-        {
-            textController.UpdateNewText("バカなっ", TextController.EyeType.Cross, TextController.Priority.Low);
         }
 
         newVelocity = new Vector2(velocityX, velocityY);

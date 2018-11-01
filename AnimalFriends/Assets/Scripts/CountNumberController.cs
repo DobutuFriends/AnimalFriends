@@ -39,18 +39,18 @@ public class CountNumberController : MonoBehaviour
 
     public void PlayThreeSound()
     {
-        AudioManager.Instance.PlaySE("three", 0.3f);
+        AudioManager.Instance.PlaySE("three", 1.0f);
     }
     public void PlayTwoSound()
     {
-        AudioManager.Instance.PlaySE("two", 0.3f);
+        AudioManager.Instance.PlaySE("two", 1.0f);
     }
     public void PlayOneSound()
     {
-        AudioManager.Instance.PlaySE("one", 0.3f);
+        AudioManager.Instance.PlaySE("one", 1.0f);
     }
     public void PlayGoSound()
     {
-        AudioManager.Instance.PlaySE("go", 0.3f);
+        AudioManager.Instance.PlaySE("go", 1.0f);
     }
 }

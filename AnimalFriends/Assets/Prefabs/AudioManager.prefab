@@ -51,7 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5091f3531935043cb8c78473f8a8c37c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMList: []
+  BGMList:
+  - {fileID: 8300000, guid: 4fe8c2a2f51b54e628174e712fd1ca25, type: 3}
+  - {fileID: 8300000, guid: fe733aecb06d94cc497752abf2d39e55, type: 3}
+  - {fileID: 8300000, guid: 6213fd091e5144ff59bf13103a110414, type: 3}
+  - {fileID: 8300000, guid: a2e4736db6a5e4ea98d44deb3d64a4a3, type: 3}
+  - {fileID: 8300000, guid: 90f7a151d04614a55add3358cc31431a, type: 3}
+  - {fileID: 8300000, guid: 6c93f031e3de74d33a8f2c650eb7399c, type: 3}
+  - {fileID: 8300000, guid: 914367bc1db414ae3b2d9beecf93935a, type: 3}
+  - {fileID: 8300000, guid: 190797e6b95b04c58a11cd6b61eb1570, type: 3}
   SEList:
   - {fileID: 8300000, guid: 03544c2415b33408491f9b241e09e81e, type: 3}
   - {fileID: 8300000, guid: 1b423d4cd589949b69446f8312a992b4, type: 3}
@@ -93,3 +101,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9c8baed5105040bcae527e7bb27ad0e, type: 3}
   - {fileID: 8300000, guid: 6669c12454ce04fedbecb2c15cb35c2c, type: 3}
   - {fileID: 8300000, guid: 4903651e851724c99b0106be74cfb2b2, type: 3}
+  - {fileID: 8300000, guid: 12e5c0be7407b45d0b612955d9068ab4, type: 3}
+  - {fileID: 8300000, guid: 72cb211cc9c5243609bf20526369ae79, type: 3}
+  - {fileID: 8300000, guid: 20e8493f2003045bd9e59ebd04e3ea93, type: 3}
+  - {fileID: 8300000, guid: 6e996eb4c48124acf84ff44c17e2449e, type: 3}

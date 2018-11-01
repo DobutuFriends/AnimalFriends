@@ -39,6 +39,7 @@ public class GameClearController : MonoBehaviour
 
     public void Init()
     {
+        AudioManager.Instance.PlayBGM("bgm_maoudamashii_8bit13", 0.15f, true);
         fadePanelController.FadeIn();
         state = State.Idle;
 
@@ -78,6 +79,7 @@ public class GameClearController : MonoBehaviour
     {
         if (state == State.Idle && Input.GetKeyDown("c"))
         {
+            AudioManager.Instance.FadeOutBGM();
             fadePanelController.FadeOut("TitleScene");
             state = State.FadeOut;
         }
@@ -85,36 +87,36 @@ public class GameClearController : MonoBehaviour
 
     public void PlayGameClearSound()
     {
-        AudioManager.Instance.PlaySE("game_clear", 0.3f);
+        AudioManager.Instance.PlaySE("game_clear", 1.0f);
     }
     public void PlayGameClear2Sound()
     {
-        AudioManager.Instance.PlaySE("game_clear_2", 0.3f);
+        AudioManager.Instance.PlaySE("game_clear_2", 1.0f);
     }
     public void PlayGameClear3Sound()
     {
         switch (rank)
         {
             case "E":
-                AudioManager.Instance.PlaySE("clear_voice_1", 0.3f);
+                AudioManager.Instance.PlaySE("clear_voice_1", 1.0f);
                 break;
             case "D":
-                AudioManager.Instance.PlaySE("clear_voice_2", 0.3f);
+                AudioManager.Instance.PlaySE("clear_voice_2", 1.0f);
                 break;
             case "C":
-                AudioManager.Instance.PlaySE("clear_voice_3", 0.3f);
+                AudioManager.Instance.PlaySE("clear_voice_3", 1.0f);
                 break;
             case "B":
-                AudioManager.Instance.PlaySE("clear_voice_4", 0.3f);
+                AudioManager.Instance.PlaySE("clear_voice_4", 1.0f);
                 break;
             case "A":
-                AudioManager.Instance.PlaySE("clear_voice_5", 0.3f);
+                AudioManager.Instance.PlaySE("clear_voice_5", 1.0f);
                 break;
             case "S":
-                AudioManager.Instance.PlaySE("clear_voice_6", 0.3f);
+                AudioManager.Instance.PlaySE("clear_voice_6", 1.0f);
                 break;
             case "SS":
-                AudioManager.Instance.PlaySE("clear_voice_7", 0.3f);
+                AudioManager.Instance.PlaySE("clear_voice_7", 1.0f);
                 break;
         }
 
