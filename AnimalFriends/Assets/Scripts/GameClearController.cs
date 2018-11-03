@@ -13,6 +13,7 @@ public class GameClearController : MonoBehaviour
     private Text score3Text;
     private Text scoreTotalText;
     private Text rankText;
+    private string resultText;
     private float totalScore;
     private string rank;
 
@@ -33,6 +34,7 @@ public class GameClearController : MonoBehaviour
         totalScore = StaticController.stage1Time + StaticController.stage2Time + StaticController.stage3Time;
         scoreTotalText = GameObject.Find("ScoreTotal").GetComponent<Text>();
         fadePanelController = GameObject.Find("FadePanel").GetComponent<FadePanelController>();
+        resultText = "";
         state = State.Init;
         Init();
     }
@@ -45,30 +47,37 @@ public class GameClearController : MonoBehaviour
 
         if (totalScore > 180.0f)
         {
+            resultText = "「はっ、私今寝てました？」";
             rank = "E";
         }
         else if (totalScore > 80.0f)
         {
+            resultText = "「すみません、ちょっと時間かかっちゃいました」";
             rank = "D";
         }
         else if (totalScore > 60.0f)
         {
+            resultText = "「まずまずのスコアですね」";
             rank = "C";
         }
         else if (totalScore > 50.0f)
         {
+            resultText = "「だいぶ速かったんじゃないですか？！」";
             rank = "B";
         }
         else if (totalScore > 43.0f)
         {
+            resultText = "「ふふっ、韋駄天ゆかりと呼んでください」";
             rank = "A";
         }
         else if (totalScore > 40.0f)
         {
+            resultText = "「これが最速と見て間違いないですね」";
             rank = "S";
         }
         else
         {
+            resultText = "「え？こんなタイム出るんですか？」";
             rank = "SS";
         }
         rankText.text = rank;
@@ -77,12 +86,6 @@ public class GameClearController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == State.Idle && Input.GetKeyDown("c"))
-        {
-            AudioManager.Instance.FadeOutBGM();
-            fadePanelController.FadeOut("TitleScene");
-            state = State.FadeOut;
-        }
     }
 
     public void PlayGameClearSound()
@@ -121,5 +124,31 @@ public class GameClearController : MonoBehaviour
         }
 
 
+    }
+
+    public void GoToTitle()
+    {
+        if (state != State.FadeOut)
+        {
+            fadePanelController.FadeOut("TitleScene");
+            AudioManager.Instance.PlaySE("decision27", 0.3f);
+            AudioManager.Instance.FadeOutBGM();
+            state = State.FadeOut;
+        }
+    }
+    public void Tweet()
+    {
+        if (state != State.FadeOut)
+        {
+            string url = "https://twitter.com/intent/tweet?text=" +
+                WWW.EscapeURL("トータルスコア" + StaticController.GetTotalTimeText() + "でランク" + rank + "達成！\n" + resultText + " #ゆかマキ徒競走");
+#if UNITY_EDITOR
+            Application.OpenURL(url);
+#elif UNITY_WEBGL
+                Application.ExternalEval(string.Format("window.open('{0}','_blank')", url));
+#else
+                Application.OpenURL(url);
+#endif
+        }
     }
 }

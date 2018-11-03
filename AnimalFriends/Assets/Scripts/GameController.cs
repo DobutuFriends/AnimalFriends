@@ -168,6 +168,7 @@ public class GameController : MonoBehaviour
         if (state != State.FadeOut)
         {
             fadePanelController.FadeOut("TitleScene");
+            AudioManager.Instance.PlaySE("decision27", 0.3f);
             AudioManager.Instance.FadeOutBGM();
             state = State.FadeOut;
         }
