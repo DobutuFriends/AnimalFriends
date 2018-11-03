@@ -141,7 +141,7 @@ public class GameClearController : MonoBehaviour
         if (state != State.FadeOut)
         {
             string url = "https://twitter.com/intent/tweet?text=" +
-                WWW.EscapeURL("トータルスコア" + StaticController.GetTotalTimeText() + "でランク" + rank + "達成！\n" + resultText + " #ゆかマキ徒競走");
+                WWW.EscapeURL("トータルスコア" + StaticController.GetTotalTimeText() + "でランク" + rank + "達成！\n" + resultText + " #ゆかマキ徒競走\nhttps://musasin.github.io/yukamaki.html");
 #if UNITY_EDITOR
             Application.OpenURL(url);
 #elif UNITY_WEBGL
