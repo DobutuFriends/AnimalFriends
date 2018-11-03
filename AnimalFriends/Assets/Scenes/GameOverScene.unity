@@ -221,6 +221,12 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -277
       objectReference: {fileID: 0}
+    - target: {fileID: 114769531154754610, guid: e99848703bfb44dac8c75a1a18854c16,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e99848703bfb44dac8c75a1a18854c16, type: 2}
   m_IsPrefabAsset: 0

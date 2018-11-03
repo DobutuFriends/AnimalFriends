@@ -162,4 +162,14 @@ public class GameController : MonoBehaviour
             state = State.NpcGoal;
         }
     }
+
+    public void GoToTitle()
+    {
+        if (state != State.FadeOut)
+        {
+            fadePanelController.FadeOut("TitleScene");
+            AudioManager.Instance.FadeOutBGM();
+            state = State.FadeOut;
+        }
+    }
 }

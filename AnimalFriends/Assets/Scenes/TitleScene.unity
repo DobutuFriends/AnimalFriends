@@ -794,7 +794,7 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: "\u3010\u7ACB\u3061\u7D75\u3011\n\u7D50\u6708\u3086\u304B\u308A, \u5F26\u5DFB\u30DE\u30AD\n(blueberry\u69D8)\nhttp://seiga.nicovideo.jp/seiga/im5854897\nhttp://seiga.nicovideo.jp/seiga/im5885336\n\n\u3010\u5439\u304D\u51FA\u3057\u3011\n\u6A2A\u9577\u30B9\u30EA\u30E0\u9577\u65B9\u5F62
-        (\u30D5\u30AD\u30C0\u30B7\u30C7\u30B6\u30A4\u30F3\u69D8)\nhttp://fukidesign.com/wp/?p=473\n\n\u3010SE\u3011\n\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\nhttps://soundeffect-lab.info/"
+        (\u30D5\u30AD\u30C0\u30B7\u30C7\u30B6\u30A4\u30F3\u69D8)\nhttp://fukidesign.com/wp/?p=473\n\n\u3010SE\u3011\n\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\nhttps://soundeffect-lab.info"
       objectReference: {fileID: 0}
     - target: {fileID: 224922191697497034, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
         type: 2}
@@ -826,6 +826,60 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114824795261355588, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad,
+        type: 3}
+    - target: {fileID: 114505193209388508, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad,
+        type: 3}
+    - target: {fileID: 114185779514563888, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad,
+        type: 3}
+    - target: {fileID: 114427174385128940, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad,
+        type: 3}
+    - target: {fileID: 114427174385128940, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_Text
+      value: "\uFF08\u30B7\u30CA\u30EA\u30AA\u5168\u30B9\u30AD\u30C3\u30D7\uFF09"
+      objectReference: {fileID: 0}
+    - target: {fileID: 224701292597872634, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 16.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114479519358980448, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_Text
+      value: "    \u30C8\u30B8\u30EB    "
+      objectReference: {fileID: 0}
+    - target: {fileID: 1600216731511938, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114478671379420882, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114478671379420882, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d122dbc2d84e84c3aaf4513bbfcb0f2f, type: 2}
   m_IsPrefabAsset: 0
@@ -887,7 +941,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -959,14 +1013,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -1039,14 +1093,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8f687b3abae324439b83fa9bc7fe92ad, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -1060,7 +1114,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\u30AF\u30EC\u30B8\u30C3\u30C8\n\n\u3010\u7ACB\u3061\u7D75]\u3011\n\u7D50\u6708\u3086\u304B\u308A\u3010\u30AD\u30E3\u30E9\u7D20\u6750\u3011(blueberry\u69D8)\nhttp://seiga.nicovideo.jp/seiga/im5854897\n\n\u5F26\u5DFB\u30DE\u30AD\u3010\u30AD\u30E3\u30E9\u7D20\u6750\u3011(blueberry\u69D8)\nhttp://seiga.nicovideo.jp/seiga/im5885336\n\n\u3010\u5439\u304D\u51FA\u3057\u3011\n\u6A2A\u9577\u30B9\u30EA\u30E0\u9577\u65B9\u5F62
     (\u30D5\u30AD\u30C0\u30B7\u30C7\u30B6\u30A4\u30F3\u69D8)\nhttp://fukidesign.com/wp/?p=473\n\n\u3010\u80CC\u666F\u3011\n2D
-    Jungle Side-Scrolling Platformer Pack (Super Brutal Assets\u69D8)\nhttps://assetstore.unity.com/packages/2d/environments/2d-jungle-side-scrolling-platformer-pack-78506\n\n\u3010BGM\u3011\n\u9B54\u738B\u9B42\u69D8\nhttps://maoudamashii.jokersounds.com/\n\n\u3010SE\u3011\n\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\nhttps://soundeffect-lab.info/"
+    Jungle Side-Scrolling Platformer Pack (Super Brutal Assets\u69D8)\nhttps://assetstore.unity.com/packages/2d/environments/2d-jungle-side-scrolling-platformer-pack-78506\n\n\u3010BGM\u3011\n\u9B54\u738B\u9B42\u69D8\nhttps://maoudamashii.jokersounds.com/\n\n\u3010SE\u3011\n\u52B9\u679C\u97F3\u30E9\u30DC\u69D8\nhttps://soundeffect-lab.info"
 --- !u!222 &2024918293
 CanvasRenderer:
   m_ObjectHideFlags: 0

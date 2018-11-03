@@ -19,7 +19,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager>
 
     private bool isFadeOut = false;
 
-    public void Start()
+    public void Awake()
     {
         // Audio Listener がなければ作る
         if (FindObjectsOfType(typeof(AudioListener)).All(o => !((AudioListener)o).enabled))
