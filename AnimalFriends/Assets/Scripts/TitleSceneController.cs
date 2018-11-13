@@ -17,6 +17,7 @@ public class TitleSceneController : MonoBehaviour
     {
         fadePanelController = GameObject.Find("FadePanel").GetComponent<FadePanelController>();
         rtaModeToggle = GameObject.Find("RTAModeToggle").GetComponent<Toggle>();
+        rtaModeToggle.isOn = StaticController.isSkipAllPrologue;
         state = State.Init;
         Init();
     }
@@ -42,6 +43,7 @@ public class TitleSceneController : MonoBehaviour
             AudioManager.Instance.FadeOutBGM();
             fadePanelController.FadeOut("Stage1");
             AudioManager.Instance.PlaySE("decision27", 0.3f);
+            state = State.FadeOut;
         }
     }
 

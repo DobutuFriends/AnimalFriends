@@ -134,7 +134,7 @@ public class StaticController : MonoBehaviour
         stage1TimeText = "--:--:--";
         stage2TimeText = "--:--:--";
         stage3TimeText = "--:--:--";
-        isSkipAllPrologue = false;
+        //isSkipAllPrologue = false;
         isSkipStage1Prologue = false;
         isSkipStage2Prologue = false;
         isSkipStage3Prologue = false;

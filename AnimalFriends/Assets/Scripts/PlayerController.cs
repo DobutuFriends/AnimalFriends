@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UniRx;
 using System;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float speed;
     public float jumpPower;
     public float attackInterval;
@@ -152,15 +152,37 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("c") && jumpCount < 2)
         {
-            if (jumpCount == 0)
+            int jumpRand = (int)UnityEngine.Random.Range(0.0f, 7.0f);
+            switch (jumpRand)
             {
-                textController.UpdateNewText("えい！", TextController.EyeType.Cross, TextController.Priority.Low);
-                AudioManager.Instance.PlaySE("jump01", 1.0f);
-            }
-            else
-            {
-                textController.UpdateNewText("とお！", TextController.EyeType.Anger, TextController.Priority.Low);
-                AudioManager.Instance.PlaySE("jump02", 1.0f);
+                case 0:
+                    textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-0", 1.0f);
+                    break;
+                case 1:
+                    textController.UpdateNewText("ジャーンプ！", TextController.EyeType.Wink, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-1", 1.0f);
+                    break;
+                case 2:
+                    textController.UpdateNewText("よいしょ！", TextController.EyeType.Cross, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-2", 1.0f);
+                    break;
+                case 3:
+                    textController.UpdateNewText("えい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-3", 1.0f);
+                    break;
+                case 4:
+                    textController.UpdateNewText("とおっ", TextController.EyeType.Anger, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-4", 1.0f);
+                    break;
+                case 5:
+                    textController.UpdateNewText("ほいっ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-5", 1.0f);
+                    break;
+                case 6:
+                    textController.UpdateNewText("とりゃ", TextController.EyeType.Cross, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-6", 1.0f);
+                    break;
             }
 
             velocityY = jumpPower;

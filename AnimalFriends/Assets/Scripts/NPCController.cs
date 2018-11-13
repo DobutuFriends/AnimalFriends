@@ -194,13 +194,31 @@ public class NPCController : MonoBehaviour
 
             if (movementType["isJump"] && !movementType["isJumped"] && jumpCount < 2)
             {
-                if (jumpCount == 0)
+
+                int jumpRand = (int)UnityEngine.Random.Range(0.0f, 7.0f);
+                switch (jumpRand)
                 {
-                    textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
-                }
-                else
-                {
-                    textController.UpdateNewText("やあ！", TextController.EyeType.Anger, TextController.Priority.Low);
+                    case 0:
+                        textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                        break;
+                    case 1:
+                        textController.UpdateNewText("やあ！", TextController.EyeType.Anger, TextController.Priority.Low);
+                        break;
+                    case 2:
+                        textController.UpdateNewText("ジャンプ！", TextController.EyeType.Wink, TextController.Priority.Low);
+                        break;
+                    case 3:
+                        textController.UpdateNewText("うりゃ！", TextController.EyeType.Cross, TextController.Priority.Low);
+                        break;
+                    case 4:
+                        textController.UpdateNewText("ほいっ", TextController.EyeType.Normal, TextController.Priority.Low);
+                        break;
+                    case 5:
+                        textController.UpdateNewText("たあ！", TextController.EyeType.Smile, TextController.Priority.Low);
+                        break;
+                    case 6:
+                        textController.UpdateNewText("えい！", TextController.EyeType.Cross, TextController.Priority.Low);
+                        break;
                 }
 
                 movementType["isJumped"] = true;
