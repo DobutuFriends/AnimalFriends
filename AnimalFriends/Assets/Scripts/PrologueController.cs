@@ -43,6 +43,7 @@ public class PrologueController : MonoBehaviour
         }
 
         npcController = GameObject.Find("maki").GetComponent<NPCController>();
+        npcController.SetIsPlayJumpVoice(false);
         cameraMarkerController = GameObject.FindGameObjectWithTag("CameraMarker").GetComponent<CameraMarkerController>();
         gameController = this.GetComponent<GameController>();
 
@@ -52,9 +53,7 @@ public class PrologueController : MonoBehaviour
 
     void Init()
     {
-
         AudioManager.Instance.PlayBGM("bgm_maoudamashii_8bit02", 0.2f, true);
-
     }
 
     // Update is called once per frame
@@ -228,6 +227,7 @@ public class PrologueController : MonoBehaviour
                 {
                     gameController.Init();
                     state = PrologueState.Talk11;
+                    npcController.SetIsPlayJumpVoice(true);
                 }
                 break;
             case PrologueState.Talk11:
@@ -339,6 +339,7 @@ public class PrologueController : MonoBehaviour
                 {
                     gameController.Init();
                     state2 = PrologueState2.Talk11;
+                    npcController.SetIsPlayJumpVoice(true);
                 }
                 break;
             case PrologueState2.Talk11:
@@ -455,6 +456,7 @@ public class PrologueController : MonoBehaviour
                     npcController.addMoveDict(true, false, false, false, false, 1.1f);
                     gameController.Init();
                     state3 = PrologueState3.Talk11;
+                    npcController.SetIsPlayJumpVoice(true);
                 }
                 break;
             case PrologueState3.Talk11:
