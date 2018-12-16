@@ -91,6 +91,7 @@ public class GameController : MonoBehaviour
                 {
                     npcController.addMoveDict(false, false, true, false, false, 2.0f);
                     textControllerRight.UpdateNewText("ギュンギュンいくよー！", TextController.EyeType.Cross, TextController.Priority.Normal);
+                    AudioManager.Instance.PlaySE("maki-start", 1.0f);
                 }
                 state = State.Playing;
                 break;

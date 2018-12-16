@@ -444,6 +444,16 @@ Prefab:
       propertyPath: seVolume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114566728160350492, guid: 2c44275f7fe67432087d85483fec2a44,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114566728160350492, guid: 2c44275f7fe67432087d85483fec2a44,
+        type: 2}
+      propertyPath: voiceFileName
+      value: maki-goal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c44275f7fe67432087d85483fec2a44, type: 2}
   m_IsPrefabAsset: 0

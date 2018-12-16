@@ -159,6 +159,7 @@ public class NPCController : MonoBehaviour
                     return newVelocity;
                 }
                 textController.UpdateNewText("ゴー！", TextController.EyeType.Cross, TextController.Priority.Low);
+                AudioManager.Instance.PlaySE("maki-go", 1.0f);
                 movementType = new Dictionary<string, bool>(nextMovementType);
                 nextMovementType.Clear();
                 motionTime = nextMotionTime;
@@ -194,33 +195,38 @@ public class NPCController : MonoBehaviour
 
             if (movementType["isJump"] && !movementType["isJumped"] && jumpCount < 2)
             {
-
                 int jumpRand = (int)UnityEngine.Random.Range(0.0f, 7.0f);
                 switch (jumpRand)
                 {
                     case 0:
                         textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                        AudioManager.Instance.PlaySE("maki-jump-0", 1.0f);
                         break;
                     case 1:
                         textController.UpdateNewText("やあ！", TextController.EyeType.Anger, TextController.Priority.Low);
+                        AudioManager.Instance.PlaySE("maki-jump-1", 1.0f);
                         break;
                     case 2:
                         textController.UpdateNewText("ジャンプ！", TextController.EyeType.Wink, TextController.Priority.Low);
+                        AudioManager.Instance.PlaySE("maki-jump-2", 1.0f);
                         break;
                     case 3:
                         textController.UpdateNewText("うりゃ！", TextController.EyeType.Cross, TextController.Priority.Low);
+                        AudioManager.Instance.PlaySE("maki-jump-3", 1.0f);
                         break;
                     case 4:
                         textController.UpdateNewText("ほいっ", TextController.EyeType.Normal, TextController.Priority.Low);
+                        AudioManager.Instance.PlaySE("maki-jump-4", 1.0f);
                         break;
                     case 5:
                         textController.UpdateNewText("たあ！", TextController.EyeType.Smile, TextController.Priority.Low);
+                        AudioManager.Instance.PlaySE("maki-jump-5", 1.0f);
                         break;
                     case 6:
                         textController.UpdateNewText("えい！", TextController.EyeType.Cross, TextController.Priority.Low);
+                        AudioManager.Instance.PlaySE("maki-jump-6", 1.0f);
                         break;
                 }
-
                 movementType["isJumped"] = true;
                 velocityY = jumpPower;
                 jumpCount++;
@@ -229,11 +235,6 @@ public class NPCController : MonoBehaviour
 
             transform.localScale = scale;
         }
-
-
-
-
-
 
         newVelocity = new Vector2(velocityX, velocityY);
         rb.velocity = newVelocity;

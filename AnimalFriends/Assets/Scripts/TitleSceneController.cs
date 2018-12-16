@@ -36,6 +36,7 @@ public class TitleSceneController : MonoBehaviour
         if (state == State.Opening && !fadePanelController.IsFading())
         {
             AudioManager.Instance.PlaySE("title", 1.0f);
+            AudioManager.Instance.PlaySE("maki_title", 0.6f);
             state = State.Idle;
         }
         if (state == State.Idle && Input.GetKeyDown("c"))

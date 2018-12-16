@@ -1013,6 +1013,46 @@ Prefab:
       propertyPath: seVolume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114533365969176576, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114533365969176576, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: maki-stage-3-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696523153275756, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: maki-stage-3-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696523153275756, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135600102628220, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: maki-goal
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135600102628220, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114284385248535104, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: isSpeak
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114284385248535104, guid: 396043285abf2465498feb38127f16b1,
+        type: 2}
+      propertyPath: voiceFileName
+      value: maki-stage-3-3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 396043285abf2465498feb38127f16b1, type: 2}
   m_IsPrefabAsset: 0

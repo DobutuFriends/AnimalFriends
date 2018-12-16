@@ -133,13 +133,14 @@ public class PrologueController : MonoBehaviour
                 {
                     npcController.addMoveDict(true, false, false, true, false, 1.1f);
                     textControllerRight.UpdateNewText("ゆかりんゆかりん！   ", TextController.EyeType.Cross, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("maki_prologue_1_1", 1.0f);
                     state = PrologueState.Talk1;
                 }
                 break;
             case PrologueState.Talk1:
                 if (!textControllerRight.GetIsTalking())
                 {
-                    textControllerLeft.UpdateNewText("どうしたんですか、マキさん   ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    textControllerLeft.UpdateNewText("どうしたんですか、マキさん         ", TextController.EyeType.Normal, TextController.Priority.Low);
                     AudioManager.Instance.PlaySE("prologue_1_1", 1.0f);
                     state = PrologueState.Talk2;
                 }
@@ -147,7 +148,8 @@ public class PrologueController : MonoBehaviour
             case PrologueState.Talk2:
                 if (!textControllerLeft.GetIsTalking())
                 {
-                    textControllerRight.UpdateNewText("向こうに大きな木があったんだ！   ", TextController.EyeType.Star, TextController.Priority.High);
+                    textControllerRight.UpdateNewText("向こうに大きな木があったんだ！      ", TextController.EyeType.Star, TextController.Priority.High);
+                    AudioManager.Instance.PlaySE("maki_prologue_1_2", 1.0f);
                     npcController.addMoveDict(true, true, false, false, false, 0.1f);
                     npcController.addMoveDict(false, false, true, false, false, 0.1f);
                     state = PrologueState.Talk3;
@@ -181,21 +183,23 @@ public class PrologueController : MonoBehaviour
                 }
                 break;
             case PrologueState.Talk5:
-                textControllerLeft.UpdateNewText("ここからでもよく見えますね      ", TextController.EyeType.Normal, TextController.Priority.Low);
+                textControllerLeft.UpdateNewText("ここからでもよく見えますね         ", TextController.EyeType.Normal, TextController.Priority.Low);
                 AudioManager.Instance.PlaySE("prologue_1_4", 1.0f);
                 state = PrologueState.Talk6;
                 break;
             case PrologueState.Talk6:
                 if (!textControllerLeft.GetIsTalking())
                 {
-                    textControllerRight.UpdateNewText("目印にちょうど良いと思ったんだ      ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    textControllerRight.UpdateNewText("目印にちょうど良いと思ったんだ            ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("maki_prologue_1_3", 1.0f);
                     state = PrologueState.Talk7;
                 }
                 break;
             case PrologueState.Talk7:
                 if (!cameraMarkerController.GetIsMoving() && !textControllerRight.GetIsTalking())
                 {
-                    textControllerRight.UpdateNewText("あそこまで競争しようよ！   ", TextController.EyeType.Smile, TextController.Priority.High);
+                    textControllerRight.UpdateNewText("あそこまで競争しようよ！      ", TextController.EyeType.Smile, TextController.Priority.High);
+                    AudioManager.Instance.PlaySE("maki_prologue_1_4", 1.0f);
                     npcController.addMoveDict(true, true, false, false, false, 0.1f);
                     npcController.addMoveDict(false, false, false, true, false, 0.1f);
                     state = PrologueState.Talk8;
@@ -240,13 +244,14 @@ public class PrologueController : MonoBehaviour
                 {
                     npcController.addMoveDict(true, false, false, false, true, 1.1f);
                     textControllerRight.UpdateNewText("負けちゃった   ", TextController.EyeType.Cross, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("maki_prologue_2_1", 1.0f);
                     state2 = PrologueState2.Talk1;
                 }
                 break;
             case PrologueState2.Talk1:
                 if (!textControllerRight.GetIsTalking())
                 {
-                    textControllerLeft.UpdateNewText("今回は私の勝ちですね   ", TextController.EyeType.Smile, TextController.Priority.Low);
+                    textControllerLeft.UpdateNewText("今回は私の勝ちですね            ", TextController.EyeType.Smile, TextController.Priority.Low);
                     AudioManager.Instance.PlaySE("prologue_2_1", 1.0f);
                     state2 = PrologueState2.Talk2;
                 }
@@ -254,7 +259,8 @@ public class PrologueController : MonoBehaviour
             case PrologueState2.Talk2:
                 if (!textControllerLeft.GetIsTalking())
                 {
-                    textControllerRight.UpdateNewText("もう一回！次はあの木にしよう！   ", TextController.EyeType.Anger, TextController.Priority.High);
+                    textControllerRight.UpdateNewText("もう一回！次はあの木にしよう！            ", TextController.EyeType.Anger, TextController.Priority.High);
+                    AudioManager.Instance.PlaySE("maki_prologue_2_2", 1.0f);
                     npcController.addMoveDict(true, true, false, false, false, 0.1f);
                     npcController.addMoveDict(false, false, true, false, false, 0.1f);
                     state2 = PrologueState2.Talk3;
@@ -288,7 +294,7 @@ public class PrologueController : MonoBehaviour
                 }
                 break;
             case PrologueState2.Talk5:
-                textControllerLeft.UpdateNewText("足を踏み外さないように気をつけないといけませんね      ", TextController.EyeType.Normal, TextController.Priority.Low);
+                textControllerLeft.UpdateNewText("足を踏み外さないように気をつけないといけませんね            ", TextController.EyeType.Normal, TextController.Priority.Low);
                 AudioManager.Instance.PlaySE("prologue_2_4", 1.0f);
                 state2 = PrologueState2.Talk6;
                 break;
@@ -296,6 +302,7 @@ public class PrologueController : MonoBehaviour
                 if (!textControllerLeft.GetIsTalking())
                 {
                     textControllerRight.UpdateNewText("次は本気でいくからね      ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("maki_prologue_2_3", 1.0f);
                     state2 = PrologueState2.Talk7;
                 }
                 break;
@@ -303,6 +310,7 @@ public class PrologueController : MonoBehaviour
                 if (!cameraMarkerController.GetIsMoving() && !textControllerRight.GetIsTalking())
                 {
                     textControllerRight.UpdateNewText("負けないぞ！   ", TextController.EyeType.Smile, TextController.Priority.High);
+                    AudioManager.Instance.PlaySE("maki_prologue_2_4", 1.0f);
                     npcController.addMoveDict(true, true, false, false, false, 0.1f);
                     npcController.addMoveDict(false, false, false, true, false, 0.1f);
                     state2 = PrologueState2.Talk8;
@@ -345,14 +353,15 @@ public class PrologueController : MonoBehaviour
                 if (!fadePanelController.IsFading())
                 {
                     npcController.addMoveDict(true, false, false, false, true, 1.1f);
-                    textControllerRight.UpdateNewText("いたた、さっきのところで足をくじいちゃった   ", TextController.EyeType.Cross, TextController.Priority.Low);
+                    textControllerRight.UpdateNewText("いたた、さっきのところで足をくじいちゃった         ", TextController.EyeType.Cross, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("maki_prologue_3_1", 1.0f);
                     state3 = PrologueState3.Talk1;
                 }
                 break;
             case PrologueState3.Talk1:
                 if (!textControllerRight.GetIsTalking())
                 {
-                    textControllerLeft.UpdateNewText("！ 大丈夫ですか、歩けますか？   ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    textControllerLeft.UpdateNewText("！ 大丈夫ですか、歩けますか？         ", TextController.EyeType.Normal, TextController.Priority.Low);
                     AudioManager.Instance.PlaySE("prologue_3_1", 1.0f);
                     state3 = PrologueState3.Talk2;
                 }
@@ -361,13 +370,14 @@ public class PrologueController : MonoBehaviour
                 if (!textControllerLeft.GetIsTalking())
                 {
                     textControllerRight.UpdateNewText("ちょっと厳しいかも...   ", TextController.EyeType.Normal, TextController.Priority.High);
+                    AudioManager.Instance.PlaySE("maki_prologue_3_2", 1.0f);
                     state3 = PrologueState3.Talk3;
                 }
                 break;
             case PrologueState3.Talk3:
                 if (!textControllerRight.GetIsTalking())
                 {
-                    textControllerLeft.UpdateNewText("ここからだと、マキさんのおうちはどっちでしたっけ？   ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    textControllerLeft.UpdateNewText("ここからだと、マキさんのおうちはどっちでしたっけ？         ", TextController.EyeType.Normal, TextController.Priority.Low);
                     AudioManager.Instance.PlaySE("prologue_3_2", 1.0f);
                     state3 = PrologueState3.Talk3_2;
                 }
@@ -376,6 +386,7 @@ public class PrologueController : MonoBehaviour
                 if (!textControllerLeft.GetIsTalking())
                 {
                     textControllerRight.UpdateNewText("向こうに見える木のそばだよ   ", TextController.EyeType.Normal, TextController.Priority.High);
+                    AudioManager.Instance.PlaySE("maki_prologue_3_3", 1.0f);
                     state3 = PrologueState3.MoveOnCamera;
                 }
                 break;
@@ -406,7 +417,7 @@ public class PrologueController : MonoBehaviour
             case PrologueState3.Talk6:
                 if (!textControllerLeft.GetIsTalking())
                 {
-                    textControllerLeft.UpdateNewText("競争の続きはまた今度にしましょう      ", TextController.EyeType.Smile, TextController.Priority.Low);
+                    textControllerLeft.UpdateNewText("競争の続きはまた今度にしましょう               ", TextController.EyeType.Smile, TextController.Priority.Low);
                     AudioManager.Instance.PlaySE("prologue_3_5", 1.0f);
                     state3 = PrologueState3.Talk7;
                 }
@@ -415,6 +426,7 @@ public class PrologueController : MonoBehaviour
                 if (!textControllerLeft.GetIsTalking())
                 {
                     textControllerRight.UpdateNewText("ごめんねゆかりん、ありがとう      ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("maki_prologue_3_4", 1.0f);
                     state3 = PrologueState3.Talk8;
                 }
                 break;
