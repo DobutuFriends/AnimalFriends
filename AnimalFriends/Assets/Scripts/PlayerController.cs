@@ -1,67 +1,97 @@
 ﻿using UnityEngine;
 using UniRx;
 using System;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float speed;
     public float jumpPower;
     public float attackInterval;
     public float dashReceptionTime;
+    public float defaultColliderSize;
+    public float defaultColliderOffsetY;
+    public bool canMove;
     private Rigidbody2D rb;
     private Animator animator;
-    enum State { Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, };
-    enum AttackState { Idle = 0, Attack1 = 1, Attack2 = 2, Attack3 = 3, SummerSalt = 4, }
+    private BoxCollider2D collider;
+    enum State { Init = -1, Idle = 0, Walk = 1, JumpUp = 2, JumpDown = 3, KnockBack = 4, Squat = 5, };
     enum Direction { Right = 0, Left = 1, };
 
     State state;
-    AttackState attackState;
     Direction direction = Direction.Right;
     float coolTime = 0;
     float idlingTime = 0;
+    float squatIdlingTime = 0;
     bool isDash = false;
 
-    public int maxHp;
-    int hp;
-    GameObject hpGauge;
     float defaultGaugeWidth;
+    int jumpCount;
 
     [SerializeField]
     PhysicalAttackController physicalAttack1, physicalAttack2, physicalAttack3;
 
+    TextController textController;
+    GameController gameController;
+
+    private void Awake()
+    {
+        textController = GameObject.Find("windowTextLeft").GetComponent<TextController>();
+        gameController = GameObject.FindWithTag("MainCamera").GetComponent<GameController>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        collider = GetComponent<BoxCollider2D>();
+    }
+
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        state = State.Init;
+    }
 
-        hpGauge = gameObject.transform.Find("hpGauge").gameObject;
-        defaultGaugeWidth = hpGauge.transform.localScale.x;
-
+    private void Init()
+    {
         state = State.Idle;
-        attackState = AttackState.Idle;
-        hp = maxHp;
-
-        Observable.EveryUpdate()
-            .Where(_ => Input.GetKeyDown("x"))
-            .Sample(TimeSpan.FromSeconds(0.1f))
-            .Subscribe(x => Attack())
-            .AddTo(this);
+        jumpCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 newVelocity = Move();
-        state = CalcState(newVelocity.x, newVelocity.y);
+        if (state == State.Init)
+        {
+            Init();
+        }
+
+        if (!canMove)
+        {
+            rb.velocity = new Vector2(0, 0);
+            state = State.Idle;
+        }
+        else
+        {
+
+            Vector2 newVelocity = Move();
+            state = CalcState(newVelocity.x, newVelocity.y);
+        }
+
         animator.SetInteger("state", (int)state);
+
+        Vector2 colliderSize = new Vector2(defaultColliderSize, defaultColliderSize);
+        Vector2 colliderOffset = new Vector2(0, defaultColliderOffsetY);
+        if (state == State.Squat)
+        {
+            colliderSize.y = defaultColliderSize / 2;
+            colliderOffset.y = defaultColliderOffsetY * 1.5f;
+        }
+        collider.size = colliderSize;
+        collider.offset = colliderOffset;
+
         coolTime -= Time.deltaTime;
     }
 
     Vector2 Move()
     {
-        SummarSolt();
         Vector2 scale = transform.localScale;
         Vector2 newVelocity;
         float velocityX = rb.velocity.x;
@@ -75,7 +105,9 @@ public class PlayerController : MonoBehaviour
         if (idlingTime < dashReceptionTime &&
             ((Input.GetKeyDown("left") && direction == Direction.Left) || (Input.GetKeyDown("right") && direction == Direction.Right)))
         {
-            isDash = true;
+            // ダッシュは無しにする
+            //isDash = true;
+            isDash = false;
         }
 
         if (Input.GetKey("left"))
@@ -104,14 +136,57 @@ public class PlayerController : MonoBehaviour
         {
             isDash = false;
             idlingTime += Time.deltaTime;
+
+            if (Input.GetKey("down"))
+            {
+                squatIdlingTime += Time.deltaTime;
+            }
+            else
+            {
+                squatIdlingTime = 0;
+            }
             velocityX = 0;
         }
 
         transform.localScale = scale;
 
-        if (Input.GetKeyDown("c"))
+        if (Input.GetKeyDown("c") && jumpCount < 2)
         {
+            int jumpRand = (int)UnityEngine.Random.Range(0.0f, 7.0f);
+            switch (jumpRand)
+            {
+                case 0:
+                    textController.UpdateNewText("てい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-0", 1.0f);
+                    break;
+                case 1:
+                    textController.UpdateNewText("ジャーンプ！", TextController.EyeType.Wink, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-1", 1.0f);
+                    break;
+                case 2:
+                    textController.UpdateNewText("よいしょ！", TextController.EyeType.Cross, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-2", 1.0f);
+                    break;
+                case 3:
+                    textController.UpdateNewText("えい！", TextController.EyeType.Smile, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-3", 1.0f);
+                    break;
+                case 4:
+                    textController.UpdateNewText("とおっ", TextController.EyeType.Anger, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-4", 1.0f);
+                    break;
+                case 5:
+                    textController.UpdateNewText("ほいっ", TextController.EyeType.Normal, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-5", 1.0f);
+                    break;
+                case 6:
+                    textController.UpdateNewText("とりゃ", TextController.EyeType.Cross, TextController.Priority.Low);
+                    AudioManager.Instance.PlaySE("jump-6", 1.0f);
+                    break;
+            }
+
             velocityY = jumpPower;
+            jumpCount++;
         }
 
         newVelocity = new Vector2(velocityX, velocityY);
@@ -125,16 +200,20 @@ public class PlayerController : MonoBehaviour
         {
             return State.KnockBack;
         }
-        if (velocityY > 0)
+        if (velocityY > 0.0f)
         {
             return State.JumpUp;
         }
-        else if (velocityY < 0)
+        else if (velocityY < 0.0f)
         {
             return State.JumpDown;
         }
         else if (System.Math.Abs(velocityX) < 1)
         {
+            if (squatIdlingTime > 0)
+            {
+                return State.Squat;
+            }
             return State.Idle;
         }
         else
@@ -143,67 +222,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Attack()
-    {
-        if (coolTime > 0)
-        {
-            return;
-        }
-        Vector2 attackPosition = transform.position;
-        Quaternion attackRotation = transform.rotation;
-
-        if (Input.GetKey("up"))
-        {
-            SummarSoltStart();
-        }
-
-        if (direction == Direction.Right)
-        {
-            attackPosition.x += 80;
-            attackPosition.y -= 20;
-        }
-        else
-        {
-            attackPosition.x -= 80;
-            attackPosition.y -= 20;
-        }
-
-        switch (attackState)
-        {
-            case AttackState.Idle:
-                InstantiatePhysicalAttack(physicalAttack1, attackPosition, attackRotation);
-                attackState = AttackState.Attack1;
-                break;
-            case AttackState.Attack1:
-                InstantiatePhysicalAttack(physicalAttack2, attackPosition, attackRotation);
-                attackState = AttackState.Attack2;
-                break;
-            case AttackState.Attack2:
-                InstantiatePhysicalAttack(physicalAttack3, attackPosition, attackRotation);
-                attackState = AttackState.Attack3;
-                break;
-            case AttackState.Attack3:
-                InstantiatePhysicalAttack(physicalAttack1, attackPosition, attackRotation);
-                attackState = AttackState.Attack1;
-                break;
-        }
-        coolTime = attackInterval;
-    }
-
-    private void InstantiatePhysicalAttack(PhysicalAttackController PhysicalAttack, Vector2 position, Quaternion rotation)
-    {
-        PhysicalAttackController physicalAttackController = Instantiate(PhysicalAttack, position, rotation);
-        physicalAttackController.SetDirection(direction == Direction.Right);
-        physicalAttackController.transform.parent = transform;
-    }
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)
         {
             case "Enemy":
-                Damage(1);
                 coolTime = 0.5f;
                 if (transform.localPosition.x < collision.transform.localPosition.x)
                 {
@@ -216,49 +239,55 @@ public class PlayerController : MonoBehaviour
                 state = State.KnockBack;
                 break;
             case "MapObject":
+                //jumpCount = 0;
                 break;
             default:
                 break;
         }
     }
 
-    private void SummarSoltStart()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.Rotate(new Vector3(0, 0, 24));
-        float velocityX = rb.velocity.x; ;
-        float velocityY = jumpPower / 2;
-        rb.velocity = new Vector2(velocityX, velocityY);
-    }
-
-    private void SummarSolt()
-    {
-        if (transform.rotation != Quaternion.Euler(0, 0, 0))
+        switch (collision.gameObject.tag)
         {
-            transform.Rotate(new Vector3(0, 0, 24));
+            case "MapObject":
+                jumpCount = 0;
+                break;
+
+            case "TalkObject":
+                TalkObjectController talkController = collision.gameObject.GetComponent<TalkObjectController>();
+                if (talkController.isYukari)
+                {
+                    if (talkController.isSpeak)
+                    {
+                        AudioManager.Instance.PlaySE(talkController.voiceFileName, talkController.seVolume);
+                    }
+                    textController.UpdateNewText(talkController.text, talkController.eyeType, talkController.priority, talkController.addTextInterval);
+                    Destroy(collision.gameObject);
+                }
+                break;
+
+            case "Goal":
+                gameController.PlayerGoal();
+                break;
+
+            default:
+                break;
         }
     }
 
-    public void Damage(int damage)
+    public void SetCanMove(bool canMove)
     {
-        hp -= damage;
-        Vector2 newGaugeScale = hpGauge.transform.localScale;
-        newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
-        hpGauge.transform.localScale = newGaugeScale;
-
-        if (hp <= 0)
-        {
-            Dead();
-        }
+        this.canMove = canMove;
     }
 
-    public void Dead()
+    public void SetPosition(Vector3 position)
     {
-        hp = maxHp;
+        transform.localPosition = position;
+    }
 
-        Vector2 newGaugeScale = hpGauge.transform.localScale;
-        newGaugeScale.x = defaultGaugeWidth * hp / maxHp;
-        hpGauge.transform.localScale = newGaugeScale;
-
-        gameObject.transform.localPosition = new Vector2(-1000.0f, 300.0f);
+    public void SetScale(Vector3 scale)
+    {
+        transform.localScale = scale;
     }
 }
